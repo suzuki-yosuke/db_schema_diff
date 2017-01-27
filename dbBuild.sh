@@ -8,19 +8,36 @@
 #
 
 source /mbook/sys/var/jobroot/conf/global.conf
-ap_list="pfm_web"
-git_url="https://github.com/moneyforward"
+ap_list="./ap.list"
 
-# GitClone
+if [ -f ${ap_list} ] ; then
+   infoLog "AP_CHECK" "対象のアプリケーションを確認しました"
+else
+  errorLog "AP_CHECK" "ap.listファイルが存在しません。"
+  exit 1
+fi
 
-for ap_name in ${ap_list}
+{ # output block
+for ap_name in `cat ${ap_list}
 do
-  # git Clone
-  git clone "${git_url}"/${ap_name}
   # db Migrate
   cd ${ap_name}
-  export MF_DB_DATABASENAME=${ap_name}db_ci
-  rake db:create:all
-  rake db:structure:load
+  mv ./config/database.yml ./config/database.yml.org
+  sed -e "s/database: \(.*\)/database: \1.ci/g" ./config/database.yml.org > ./config/database.yml
 
+  if [ $? -ne 0 ] ; then
+     errorLog "Environment" "database.ymlの変換に失敗しました。"
+     exit 1
+  fi
+  rake db:create:all
+  if [ $? -ne 0 ] ; then
+     errorLog "Database" "データベースの作成に失敗しました"
+     exit 1
+  fi
+  rake db:structure:load
+  if [ $? -ne 0 ] ; then
+     errorLog "Database" "テーブルの作成に失敗しました"
+     exit 1
+  fi
 done
+} 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}

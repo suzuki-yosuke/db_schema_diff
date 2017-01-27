@@ -1,7 +1,7 @@
 #!/bin/bash
 # Function：
 #
-# Usage:./dbBuild <ResotoreDB HostName>
+# Usage:./compareDbBuild.sh <ResotoreDB HostName>
 #
 # Authoer:YosukeSuzuki 2017/01/25
 # update :
