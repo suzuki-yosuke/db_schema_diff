@@ -20,7 +20,7 @@ do
   git clone "${git_url}"
   # db Migrate
   cd ${ap_name}
-  exort MF_DB_DATABASENAME=${ap_name}db_ci
+  export MF_DB_DATABASENAME=${ap_name}db_ci
   rake db:create:all
   rake db:structure:load
 
