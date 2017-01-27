@@ -16,8 +16,7 @@ git_url="https://github.com/moneyforward"
 for ap_name in ${ap_list}
 do
   # git Clone
-  cd ${G_RAILS_ROOT}
-  git clone "${git_url}"
+  git clone "${git_url}"/${ap_name}
   # db Migrate
   cd ${ap_name}
   export MF_DB_DATABASENAME=${ap_name}db_ci
