@@ -26,7 +26,7 @@ compareDbName=`echo $compareDbHost |sed -e "s/[a-z]*\-\(.*\)[0-9]\{2\}.*/\1/g"`
 comparedb_passfile="/opt/.keys/pdev_fdb.txt"
 
 { # output block
-if [ "${envid}" -ne "prod" ] && [ "${envid}" -ne "stg1" ] && [ "${envid}" -ne "dev1" ] && [ "${envid}" -ne "pdev" ] ; then
+if [ "${envid}" != "prod" ] && [ "${envid}" != "stg1" ] && [ "${envid}" != "dev1" ] && [ "${envid}" != "pdev" ] ;then
   errorLog "Environment" "envidを設定して下さい。"
   exit 1
 fi
@@ -57,8 +57,6 @@ compareDbPass=`cat ${comparedb_passfile} | grep db_update | awk '{ print $2 }' |
 
 ## 比較用DBから、対象となるDBのリストを取得する。
 datetime=`date +%Y%m%d%H%M%S`
-
-mkdir -p ${tmp_bkdir}
 dbList="${WORKSPACE}/tmp/db_list.${dbHost}"
 
 mysql \
@@ -93,9 +91,7 @@ do
   -h ${compareDbHost} \
   -u ${compareDbID} \
   -p${compareDbPass} \
-  <<EOF
-drop database ${database};
-EOF
+  -e "drop database ${database}"
   statusCheck $? "MySQL_DB_CHECK" "${database}のDBドロップに失敗しました。"
 done
 
