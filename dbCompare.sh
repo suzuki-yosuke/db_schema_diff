@@ -16,6 +16,10 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 dbHost=localhost
 dbpassfile="/opt/.keys/pdev_fdb.txt"
+s3passfile="/opt/.keys/s3.cfg"
+
+AWS_ACCESS_KEY_ID=`egrep access_key ${s3passfile} |awk '{print $3}'`
+AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
 
 #targetDbHost="pdev-syosuke20.ebisubook.com"
 #compareDbHost="pdev-iida20.ebisubook.com"
