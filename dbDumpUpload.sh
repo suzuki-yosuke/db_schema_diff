@@ -9,7 +9,7 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 s3cfg="/opt/.keys/s3_mysql-schema-info.txt"
-tmp_bkdir=${G_MBOOK_DATA}/tmp/mysqldump
+tmp_bkdir=${WORKSPACE}/tmp/mysqldump
 s3BucketName="mysql-schema-info"
 
 if [ $# -ne 1 ]; then
@@ -48,7 +48,7 @@ else
    exit 1
 fi
 
-dbList="/tmp/db_list.${dbHost}"
+dbList="${WORKSPACE}/tmp/db_list.${dbHost}"
 mysql \
 -h ${dbHost} \
 -u ${dbID} \
