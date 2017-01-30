@@ -33,7 +33,7 @@ for ap_name in `egrep -v "^#" ${ap_list}`
 do
   # db Migrate
   mkdir -p ${WORKSPACE}/${ap_name}
-  cd ${WORKSPACE}${ap_name}
+  cd ${WORKSPACE}/${ap_name}
 
   mv ./config/database.yml ./config/database.yml.org
 
