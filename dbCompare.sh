@@ -18,7 +18,6 @@ fi
 
 dbHost=localhost
 dbpassfile="/opt/.keys/pdev_fdb.txt"
-envid=$1
 
 #targetDbHost="pdev-syosuke20.ebisubook.com"
 #compareDbHost="pdev-iida20.ebisubook.com"

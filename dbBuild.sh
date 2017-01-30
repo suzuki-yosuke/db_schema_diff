@@ -49,7 +49,7 @@ do
      errorLog "Database" "bundle installに失敗しました。"
      exit 1
   fi
-
+  
   rake db:create:all
   if [ $? -ne 0 ] ; then
      errorLog "Database" "データベースの作成に失敗しました"
