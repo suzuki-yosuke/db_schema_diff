@@ -9,7 +9,10 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 shell_name=`basename $0 .sh`
-log_file="${G_JOB_LOG}/${shell_name}.${G_YYYYMMDD}.log"
+mkdir -p ${WORKSPACE}/{logs,tmp}
+tmpdir="${WORKSPACE}/tmp"
+logdir="${WORKSPACE}/logs"
+log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 #compareDbHost="ci-comparedb01"
 compareDbHost="pdev-syosuke20"
@@ -20,16 +23,10 @@ compareDbName=`echo $compareDbHost |sed -e "s/[a-z]*\-\(.*\)[0-9]\{2\}.*/\1/g"`
 comparedb_passfile="/opt/.keys/pdev_fdb.txt"
 
 { # output block
-if [ $# != 1 ] ;then
-  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
+if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+  errorLog "Environment" "envidを設定して下さい。"
   exit 1
 fi
-if [ $1 != prod ] && [ $1 != stg ] && [ $1 != dev ] && [ $1 != pdev ] ;then
-  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
-  exit 1
-fi
-
-envid=$1
 
 if [ ${#G_MF_ENV} -eq 0 ] ; then
    errorLog "Environment" "環境識別ファイルが未設定です。"
@@ -79,12 +76,12 @@ fi
 all_database=`egrep ${envid} ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
 ## debug
-echo "Drop Database!"
-for database in ${all_database};
-do
-  echo $nn
-done
-read
+#echo "Drop Database!"
+#for database in ${all_database};
+#do
+#  echo $nn
+#done
+#read
 
 # DB Drop
 for database in ${all_database} ;
@@ -96,7 +93,7 @@ do
   <<EOF
   drop database ${database};
 EOF
-  statusCheck $? "MySQL_DB_CHECK:${compareDbHost}:${line}" "${targetDbHost}のDBドロップに失敗しました。"
+  statusCheck $? "MySQL_DB_CHECK" "${database}のDBドロップに失敗しました。"
 done
 
 rm ${dbList}

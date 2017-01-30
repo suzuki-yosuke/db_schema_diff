@@ -28,6 +28,10 @@ fi
 #fi
 
 #envid=$1
+if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+  errorLog "Environment" "envidを設定して下さい。"
+  exit 1
+fi
 
 for ap_name in `egrep -v "^#" ${ap_list}`
 do
@@ -49,7 +53,7 @@ do
      errorLog "Database" "bundle installに失敗しました。"
      exit 1
   fi
-  
+
   rake db:create:all
   if [ $? -ne 0 ] ; then
      errorLog "Database" "データベースの作成に失敗しました"

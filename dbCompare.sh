@@ -47,7 +47,7 @@ else
 fi
 
 ## DBリスト取得
-if [ ${envid} -eq pdev ]; then
+if [ ${envid} -eq "pdev" ]; then
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}
 else
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}
