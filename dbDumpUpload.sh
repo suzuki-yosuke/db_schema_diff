@@ -56,7 +56,7 @@ mysql \
 -e 'show databases'|\
 sed -e 's/"\t"/,/g'|sort > ${dbList}
 
-if [ $? -ne 0 ]; then
+if [ -f ${dbList} ]; then
    infoLog "DB_List" "データベースのリストを取得しました。"
 else
    errorLog "DB_List" "データベースのリストを取得できませんでした"
