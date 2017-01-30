@@ -56,10 +56,24 @@ mysql \
 -e 'show databases'|\
 sed -e 's/"\t"/,/g'|sort > ${dbList}
 
+if [ $? -ne 0 ]; then
+   infoLog "DB_List" "データベースのリストを取得しました。"
+else
+   errorLog "DB_List" "データベースのリストを取得できませんでした"
+   exit 1
+fi
+
 mkdir -p ${tmp_bkdir}/${G_YYYYMMDD}&&cd ${tmp_bkdir}
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
 s3cmd put ${dbList} s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}
+
+if [ $? -ne 0 ]; then
+   infoLog "DB_List" "データベースのリストをアップロードできました。"
+else
+   errorLog "DB_List" "データベースのリストをアップロードできませんでした"
+   exit 1
+fi
 
 for database in ${all_database} ;
 do
