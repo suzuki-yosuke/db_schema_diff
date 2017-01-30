@@ -9,12 +9,10 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 shell_name=`basename $0 .sh`
-log_file="${G_JOB_LOG}/${shell_name}.${G_YYYYMMDD}.log"
-
-if [ $# == 2 ]; then
-   errorLog "引数チェック" "引数には比remo較対象のDBホストを指定してください。"
-   exit 1
-fi
+mkdir -p ${WORKSPACE}/{logs,tmp}
+tmpdir="${WORKSPACE}/tmp"
+logdir="${WORKSPACE}/logs"
+log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 dbHost=localhost
 dbpassfile="/opt/.keys/pdev_fdb.txt"
@@ -40,15 +38,19 @@ fi
 if [ -f ${db_passfile} ]; then
    infoLog "DB_Pass" "パスワードファイルの存在を確認しました。"
 else
-   errorLog "${loginID}" "DBへのログイン情報を読み込めませんでした。 ${targetdb_passfile} を確認してください"
+   errorLog "DB_Pass" "DBへのログイン情報を読み込めませんでした。 ${targetdb_passfile} を確認してください"
    exit 1
 fi
 
 ## DBリスト取得
-aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 /tmp
+if [ ${envid} -eq pdev ]; then
+  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}
+else
+  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}
+fi
 
 ## ログイン情報取得
-dbList=/tmp/dbDiff.${G_YYYYMMDD}.txt
+dbList=${tmpdir}/dbDiff.${G_YYYYMMDD}.txt
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
 dbID=`cat ${targetdb_passfile} | grep db_read | awk '{ print $1 }' | head -1`
@@ -56,6 +58,7 @@ dbPass=`cat ${targetdb_passfile} | grep db_read | awk '{ print $2 }' | head -1`
 rc_schemaCheck="0"
 rc_schemaCheckAll="0"
 
+diffDb=${tmpdir}/diffdb.tmp
 
 for dbName in ${all_database}
 do
