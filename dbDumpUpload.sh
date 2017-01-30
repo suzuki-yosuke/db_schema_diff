@@ -47,7 +47,7 @@ else
    errorLog "${dbID}" "DBへのログイン情報を読み込めませんでした。 ${dbPassFile} を確認してください"
    exit 1
 fi
-
+mkdir -p ${tmp_bkdir}
 dbList="${WORKSPACE}/tmp/db_list.${dbHost}"
 mysql \
 -h ${dbHost} \
