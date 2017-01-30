@@ -9,9 +9,12 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 shell_name=`basename $0 .sh`
-mkdir -p ${WORKSPACE}/{logs,tmp}
-tmpdir="${WORKSPACE}/tmp"
+
 logdir="${WORKSPACE}/logs"
+tmpdir="${WORKSPACE}/tmp"
+
+mkdir -p ${logdir} ${tmpdir}
+
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 #compareDbHost="ci-comparedb01"
@@ -23,12 +26,12 @@ compareDbName=`echo $compareDbHost |sed -e "s/[a-z]*\-\(.*\)[0-9]\{2\}.*/\1/g"`
 comparedb_passfile="/opt/.keys/pdev_fdb.txt"
 
 { # output block
-if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+if [ "${envid}" -ne "prod" ] && [ "${envid}" -ne "stg1" ] && [ "${envid}" -ne "dev1" ] && [ "${envid}" -ne "pdev" ] ; then
   errorLog "Environment" "envidを設定して下さい。"
   exit 1
 fi
 
-if [ ${#G_MF_ENV} -eq 0 ] ; then
+if [ ${G_MF_ENV} -eq 0 ] ; then
    errorLog "Environment" "環境識別ファイルが未設定です。"
    exit 1
 else
@@ -91,7 +94,7 @@ do
   -u ${compareDbID} \
   -p${compareDbPass} \
   <<EOF
-  drop database ${database};
+drop database ${database};
 EOF
   statusCheck $? "MySQL_DB_CHECK" "${database}のDBドロップに失敗しました。"
 done
