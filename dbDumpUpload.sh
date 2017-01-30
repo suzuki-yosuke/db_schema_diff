@@ -66,9 +66,11 @@ fi
 mkdir -p ${tmp_bkdir}/${G_YYYYMMDD}&&cd ${tmp_bkdir}
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
-s3cmd put ${dbList} s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}
+s3cmd put  --config=/opt/.keys/s3.cfg \
+  ${dbList} \
+  s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}
 
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
    infoLog "DB_List" "データベースのリストをアップロードできました。"
 else
    errorLog "DB_List" "データベースのリストをアップロードできませんでした"
@@ -86,7 +88,7 @@ do
      [ ${result[1]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のgzip 圧縮の実行に失敗しました。リターンコード：${result[1]}"        && exit 1
      [ ${result[2]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のopenssl での暗号化処理に失敗しました。リターンコード：${result[2]}" && exit 1
 
-  s3cmd put --config=//opt/.keys/s3.cfg \
+  s3cmd put --config=/opt/.keys/s3.cfg \
     ${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz \
     s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz
 
