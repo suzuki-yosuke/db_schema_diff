@@ -18,7 +18,6 @@ else
 fi
 
 { # output block
-
 if [ $# != 1 ] ;then
   echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
   exit 1
@@ -30,7 +29,7 @@ fi
 
 envid=$1
 
-for ap_name in `egrep -v ^# ${ap_list}`
+for ap_name in `egrep -v "^#" ${ap_list}`
 do
   # db Migrate
   mkdir -p ${WORKSPACE}/${ap_name}
