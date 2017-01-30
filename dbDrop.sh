@@ -21,11 +21,11 @@ comparedb_passfile="/opt/.keys/pdev_fdb.txt"
 
 { # output block
 if [ $# != 1 ] ;then
-  echo "Environment" "引数に環境を指定してください。(prod or stg or dev)"
+  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
   exit 1
 fi
-if [ $1 != prod ] && [ $1 != stg ] && [ $1 != dev ]  ;then
-  echo "Environment" "引数に環境を指定してください。(prod or stg or dev)"
+if [ $1 != prod ] && [ $1 != stg ] && [ $1 != dev ] && [ $1 != pdev ] ;then
+  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
   exit 1
 fi
 
@@ -58,7 +58,9 @@ compareDbPass=`cat ${comparedb_passfile} | grep db_update | awk '{ print $2 }' |
 ## 比較用DBから、対象となるDBのリストを取得する。
 datetime=`date +%Y%m%d%H%M%S`
 
-dbList="/tmp/db_list.${compareDbHost}"
+mkdir -p ${tmp_bkdir}
+dbList="${WORKSPACE}/tmp/db_list.${dbHost}"
+
 mysql \
 -h ${compareDbHost} \
 -u ${compareDbID} \
@@ -66,6 +68,13 @@ mysql \
 -e 'show databases'|\
 sed -e 's/"\t"/,/g'|sort > ${dbList}
 statusCheck $? "MySQL_DB_CHECK:${compareDbHost}" "${targetDbHost}のDBリストの取得に失敗しました。"
+
+if [ -f ${dbList} ]; then
+   infoLog "DB_List" "データベースのリストを取得しました。"
+else
+   errorLog "DB_List" "データベースのリストを取得できませんでした"
+   exit 1
+fi
 
 all_database=`egrep ${envid} ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 

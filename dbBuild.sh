@@ -18,12 +18,27 @@ else
 fi
 
 { # output block
-for ap_name in `cat ${ap_list}
+
+if [ $# != 1 ] ;then
+  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
+  exit 1
+fi
+if [ $1 != prod ] && [ $1 != stg ] && [ $1 != dev ] && [ $1 != pdev ] ;then
+  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
+  exit 1
+fi
+
+envid=$1
+
+for ap_name in `egrep -v ^# ${ap_list}`
 do
   # db Migrate
-  cd ${ap_name}
+  mkdir -p ${WORKSPACE}/${ap_name}
+  cd ${WORKSPACE}${ap_name}
+
   mv ./config/database.yml ./config/database.yml.org
-  sed -e "s/database: \(.*\)/database: \1.ci/g" ./config/database.yml.org > ./config/database.yml
+
+  sed -e "s/database: \(.*\)/database: \1.${envid}/g" ./config/database.yml.org > ./config/database.yml
 
   if [ $? -ne 0 ] ; then
      errorLog "Environment" "database.ymlの変換に失敗しました。"
