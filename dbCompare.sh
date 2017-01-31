@@ -61,7 +61,7 @@ dbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 rc_schemaCheck="0"
 rc_schemaCheckAll="0"
 
-diffDb=${tmpdir}/diffdb.${G_YYYYMMDD}
+diffDb=${tmpdir}/diffdb.${envid}.${G_YYYYMMDD}
 
 for dbName in ${all_database}
 do
@@ -81,7 +81,7 @@ do
     mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
-    ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp
+    ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
     rc_schemaCheck=$?
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
     if [ ${rc_schemaCheck} -ne "0" ];then
@@ -92,7 +92,7 @@ do
       echo -e "\t ci_${dbName}は存在しません。"　>> ${diffDb}
       rc_schemaCheck="1"
   fi
-  rm ${diffDb}.tmp
+
   if [ $rc_schemaCheck -ne "0" ];then
     rc_schemaCheckAll=$rc_schemaCheck
   fi
@@ -104,5 +104,5 @@ if [ $rc_schemaCheckAll -ne "0" ];then
 fi
 
 #rm ${dbList} ${diffDb}
-rm ${dbList}
+rm ${dbList} ${diffDb}
 } 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
