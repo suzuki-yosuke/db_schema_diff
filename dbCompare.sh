@@ -46,9 +46,9 @@ fi
 
 ## DBリスト取得
 if [ ${envid} == "pdev" ]; then
-  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}/${envid}/${G_YYYYMMDD}/
+  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20
 else
-  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}/${envid}/${G_YYYYMMDD}/
+  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01
 fi
 
 ## ログイン情報取得
