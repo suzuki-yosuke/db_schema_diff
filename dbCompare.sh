@@ -15,7 +15,7 @@ logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 dbHost="pdev-syosuke20"
-dbpassfile="/opt/.keys/pdev_fdb.txt"
+db_passfile="/opt/.keys/pdev_fdb.txt"
 
 s3BucketName="mysql-schema-info"
 s3passfile="/opt/.keys/s3.cfg"
