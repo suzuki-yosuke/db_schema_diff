@@ -113,7 +113,11 @@ EOF
   fi
 
   # リストア
-  mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${envid}_${database} < ${G_YYYYMMDD}/${database}.sql
+  sed -e 's/AUTO_INCREMENT=[0-9]*//g' ${G_YYYYMMDD}/${database}.sql |\
+  sed -e 's/ROW_FORMAT=COMPRESSED//g'|\
+  sed -e 's/KEY_BLOCK_SIZE=[0-9]*//g' > ${G_YYYYMMDD}/${database}_sed.sql
+
+  mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${envid}_${database} < ${G_YYYYMMDD}/${database}_sed.sql
 
   if [ $? -eq 0 ];then
     infoLog "MySQL_Restore" "${database}のリストア完了。"
