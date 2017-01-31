@@ -14,7 +14,7 @@ tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
-dbHost=localhost
+dbHost="pdev-syosuke20"
 dbpassfile="/opt/.keys/pdev_fdb.txt"
 
 s3BucketName="mysql-schema-info"
@@ -65,14 +65,16 @@ diffDb=${tmpdir}/diffdb.tmp
 
 for dbName in ${all_database}
 do
-  infoLog "MySQL_DB_CHECK" "スキーマ比較開始（$dbName）"
-  echo "[Check DBName:$dbName]" >> ${diffDb}
+  infoLog "MySQL_DB_CHECK" "スキーマ比較開始（ci_$dbName:${envid}_${dbName}）"
+  echo   "--server1=${dbID}:${dbPass}@${dbHost} --server2=${dbID}:${dbPass}@${dbHost} ci_${dbName}:${envid}_${dbName} >> ${diffDb}"
+
+  echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
   mysqldiff \
   --server1=${dbID}:${dbPass}@${dbHost} \
   --server2=${dbID}:${dbPass}@${dbHost} \
   ci_${dbName}:${envid}_${dbName} >> ${diffDb}
   rc_schemaCheck=$?
-  infoLog "MySQL_DB_CHECK" "スキーマ比較完了($dbName)：RC=${rc_schemaCheck}"
+  infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
   if [ $rc_schemaCheck -ne "0" ];then
     rc_schemaCheckAll=$rc_schemaCheck
   fi
