@@ -24,7 +24,8 @@ s3BucketName="mysql-schema-info"
 s3passfile="/opt/.keys/s3.cfg"
 AWS_ACCESS_KEY_ID=`egrep access_key ${s3passfile} |awk '{print $3}'`
 AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
-
+echo ${AWS_ACCESS_KEY_ID}
+echo ${AWS_SECRET_ACCESS_KEY}
 
 { # output sh -
 if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ]; then
