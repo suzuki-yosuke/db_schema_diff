@@ -15,7 +15,7 @@ logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 #compareDbHost="ci-comparedb01"
-compareDbHost="pdev-syosuke20"
+compareDbHost="$HOSTNAME"
 #comparedb_passfile="/opt/.keys/ci-comparedb.txt"
 comparedb_passfile="/opt/.keys/pdev_fdb.txt"
 
