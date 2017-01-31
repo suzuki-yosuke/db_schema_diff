@@ -75,9 +75,9 @@ do
   mysql \
   -u ${dbID} \
   -p ${dbPass} \
-　-h ${dbHost} \
+  -h ${dbHost} \
   -e 'show databases'|\
-  egrep ci_${dbName} >/dev/null 2>&1
+  egrep "ci_${dbName}" >/dev/null 2>&1
 
   if [ $? -eq "0" ]; then
     mysqldiff \
@@ -90,7 +90,7 @@ do
       cat ${diffDb}.tmp >> ${diffDb}
     fi
   else
-      echo "\t ci_${dbName}は存在しません。"　>> ${diffDb}
+      echo -e "\t ci_${dbName}は存在しません。"　>> ${diffDb}
       rc_schemaCheck="1"
   fi
   rm ${diffDb}.tmp
