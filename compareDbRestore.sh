@@ -47,7 +47,9 @@ else
 fi
 
 ## Dumpダウンロード
+
 mkdir -p ${tmpdir}/${envid}/${G_YYYYMMDD}
+echo debug1
 aws s3 sync s3://${s3BucketName}/${envid}/${G_YYYYMMDD} ${tmpdir}/${envid}/${G_YYYYMMDD}
 
 if [ $? -ne 0 ]; then
@@ -55,11 +57,13 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+echo debug2
 dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${restoreDbHost}"
 
 if [ -f ${dbList} ] ; then
   infoLog "DumpDownload" "データベースのリストの存在を確認しました。"
 else
+  echo debug3
   errorLog "DumpDownload" "データベースのリストを確認出来ませんでした。"
   exit 1
 fi
