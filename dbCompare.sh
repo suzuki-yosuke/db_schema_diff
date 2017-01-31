@@ -84,9 +84,10 @@ do
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
     if [ ${rc_schemaCheck} -ne "0" ];then
       cat ${diffDb}.tmp >> ${diffDb}
-  else
-    echo "\t ci_${dbName}は存在しません。"　>> ${diffDb}
-    rc_schemaCheck="1"
+    else
+      echo "\t ci_${dbName}は存在しません。"　>> ${diffDb}
+      rc_schemaCheck="1"
+    fi
   fi
   rm ${diffDb}.tmp
   if [ $rc_schemaCheck -ne "0" ];then
