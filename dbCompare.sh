@@ -56,8 +56,8 @@ dbListName=`ls ${tmpdir}/${envid}/${G_YYYYMMDD} |egrep db_list`
 dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}"
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
-dbID=`cat ${db_passfile} | grep db_read | awk '{ print $1 }' | head -1`
-dbPass=`cat ${db_passfile} | grep db_read | awk '{ print $2 }' | head -1`
+dbID=`cat ${db_passfile} | grep db_updata | awk '{ print $1 }' | head -1`
+dbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 rc_schemaCheck="0"
 rc_schemaCheckAll="0"
 
