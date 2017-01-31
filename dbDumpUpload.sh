@@ -19,7 +19,7 @@ s3cfg="/opt/.keys/s3.cfg"
 s3BucketName="mysql-schema-info"
 
 #dbHost=$1
-envid=`echo $dbHost|awk -F\- '{print $1}'`
+envid=`echo ${dbHost}|awk -F\- '{print $1}'`
 
 dbEnv=`echo ${dbHost} |awk -F\- '{print $1}'`
 db_passfile="/opt/.keys/${dbEnv}_fdb.txt"
