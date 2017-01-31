@@ -34,7 +34,12 @@ do
 
   mv ./config/database.yml ./config/database.yml.org
 
-  sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
+  if [ ${ap_name} == "mf_internal"]; then
+    cat ../mysql_schema_diff/config/database.yml.mf_internal > ./config/database.yml
+  else
+    sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
+  fi
+
 
   if [ $? -ne 0 ] ; then
      errorLog "Environment" "AP_NAME:${ap_name} database.ymlの変換に失敗しました。"
