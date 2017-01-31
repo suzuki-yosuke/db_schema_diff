@@ -66,8 +66,6 @@ diffDb=${tmpdir}/diffdb.tmp
 for dbName in ${all_database}
 do
   infoLog "MySQL_DB_CHECK" "スキーマ比較開始（ci_$dbName:${envid}_${dbName}）"
-  echo   "--server1=${dbID}:${dbPass}@${dbHost} --server2=${dbID}:${dbPass}@${dbHost} ci_${dbName}:${envid}_${dbName} >> ${diffDb}"
-
   echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
   mysqldiff \
   --server1=${dbID}:${dbPass}@${dbHost} \
