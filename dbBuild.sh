@@ -37,24 +37,24 @@ do
   sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
 
   if [ $? -ne 0 ] ; then
-     errorLog "Environment" "database.ymlの変換に失敗しました。"
+     errorLog "Environment" "AP_NAME:${ap_name} database.ymlの変換に失敗しました。"
      exit 1
   fi
 
   bundle install
   if [ $? -ne 0 ] ; then
-     errorLog "Database" "bundle installに失敗しました。"
+     errorLog "Database" "AP_NAME:${ap_name} bundle installに失敗しました。"
      exit 1
   fi
 
   rake db:create:all
   if [ $? -ne 0 ] ; then
-     errorLog "Database" "データベースの作成に失敗しました"
+     errorLog "Database" "AP_NAME:${ap_name} データベースの作成に失敗しました"
      exit 1
   fi
   rake db:structure:load
   if [ $? -ne 0 ] ; then
-     errorLog "Database" "テーブルの作成に失敗しました"
+     errorLog "Database" "AP_NAME:${ap_name} テーブルの作成に失敗しました"
      exit 1
   fi
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
