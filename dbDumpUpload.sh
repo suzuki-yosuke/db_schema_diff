@@ -15,7 +15,7 @@ tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
-s3cfg="/opt/.keys/s3_mysql-schema-info.txt"
+s3cfg="/opt/.keys/s3.cfg"
 s3BucketName="mysql-schema-info"
 
 #dbHost=$1
@@ -28,14 +28,6 @@ dbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
 dbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 
 { # output block
-if [ ${G_MF_ENV} -eq 0 ] ; then
-   errorLog "Environment" "環境識別ファイルが未設定です。"
-   exit 1
-else
-   #環境識別ファイルの定義
-   mf_env=${G_MF_ENV}
-fi
-
 if [ `id -u` == 0 ]; then
    errorLog "実行ユーザチェック" "一般ユーザ権限で実行してください。"
    exit 1
@@ -47,7 +39,6 @@ else
    errorLog "${dbID}" "DBへのログイン情報を読み込めませんでした。 ${db_passfile} を確認してください"
    exit 1
 fi
-mkdir -p ${tmpdir}
 dbList="${WORKSPACE}/tmp/db_list.${dbHost}"
 mysql \
 -h ${dbHost} \
@@ -66,7 +57,7 @@ fi
 mkdir -p ${tmpdir}/${G_YYYYMMDD}&&cd ${tmpdir}
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
-s3cmd put  --config=/opt/.keys/s3.cfg \
+s3cmd put  --config=${s3cfg} \
   ${dbList} \
   s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}
 
@@ -88,7 +79,7 @@ do
      [ ${result[1]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のgzip 圧縮の実行に失敗しました。リターンコード：${result[1]}"        && exit 1
      [ ${result[2]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のopenssl での暗号化処理に失敗しました。リターンコード：${result[2]}" && exit 1
 
-  s3cmd put --config=/opt/.keys/s3.cfg \
+  s3cmd put --config=${s3cfg}\
     ${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz \
     s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz
 
