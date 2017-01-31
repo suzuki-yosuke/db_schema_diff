@@ -69,9 +69,13 @@ do
   echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}.tmp
 
   # DB Check
+  echo "[DEBUG:ユーザ情報] ${dbID}:${dbPass}@${dbHost}"
+  echo "[DEBUG:DB情報] ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp"
+
   mysql \
   -u ${dbID} \
   -p ${dbPass} \
+　-h ${dbHost}
   -e 'show databases'|\
   egrep ci_${dbName} >/dev/null 2>&1
 
