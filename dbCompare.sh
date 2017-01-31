@@ -66,11 +66,8 @@ diffDb=${tmpdir}/diffdb.${G_YYYYMMDD}
 for dbName in ${all_database}
 do
   infoLog "MySQL_DB_CHECK" "スキーマ比較開始（ci_$dbName:${envid}_${dbName}）"
-  echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}.tmp
 
   # DB Check
-  echo "[DEBUG:ユーザ情報] ${dbID}:${dbPass}@${dbHost}"
-  echo "[DEBUG:DB情報] ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp"
 
   mysql \
   -u ${dbID} \
@@ -80,6 +77,7 @@ do
   egrep "ci_${dbName}" >/dev/null 2>&1
 
   if [ $? -eq "0" ]; then
+    echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}.tmp
     mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
@@ -87,9 +85,10 @@ do
     rc_schemaCheck=$?
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
     if [ ${rc_schemaCheck} -ne "0" ];then
-      cat ${diffDb}.tmp >> ${diffDb}
+        cat ${diffDb}.tmp >> ${diffDb}
     fi
   else
+      echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
       echo -e "\t ci_${dbName}は存在しません。"　>> ${diffDb}
       rc_schemaCheck="1"
   fi
@@ -101,7 +100,7 @@ done
 
 ## Slack通知
 if [ $rc_schemaCheckAll -ne "0" ];then
-  grep -v "^#" ${diffDb}
+    cat ${diffDb}
 fi
 
 #rm ${dbList} ${diffDb}
