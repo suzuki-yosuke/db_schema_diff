@@ -73,17 +73,17 @@ do
 
   mysqldump -d -h ${dbHost} -u${dbID} -p${dbPass} ${database} | gzip | \
     openssl enc -e -aes-256-cbc -pass env:DB_BACKUP_ENCRYPTION_KEY \
-    -out ${tmpdir}/${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz
+    -out ${tmpdir}/${G_YYYYMMDD}/${database}_encrypt.sql.gz
   result=( ${PIPESTATUS[*]} )
      [ ${result[0]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のmysqldump の実行に失敗しました。リターンコード：${result[0]}"      && exit 1
      [ ${result[1]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のgzip 圧縮の実行に失敗しました。リターンコード：${result[1]}"        && exit 1
      [ ${result[2]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のopenssl での暗号化処理に失敗しました。リターンコード：${result[2]}" && exit 1
 
   s3cmd put --config=${s3cfg}\
-    ${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz \
-    s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz
+    ${G_YYYYMMDD}/${database}_encrypt.sql.gz \
+    s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${database}_encrypt.sql.gz
 
   statusCheck $? "MySQL_Backup" "S3に保管が失敗しました。"
-  rm ${tmpdir}/${G_YYYYMMDD}/${dbHost}_${database}_encrypt.sql.gz
+  rm ${tmpdir}/${G_YYYYMMDD}/${database}_encrypt.sql.gz
 done
 } 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
