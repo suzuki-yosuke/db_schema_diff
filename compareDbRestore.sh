@@ -1,7 +1,7 @@
 #!/bin/bash
 # Function：
 #
-# Usage:./compareDbBuild.sh <ResotoreDB HostName>
+# Usage:./compareDbRestore.sh
 #
 # Authoer:YosukeSuzuki 2017/01/25
 # update :
@@ -17,8 +17,6 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 tmp_bkdir=${G_MBOOK_DATA}/tmp/mysqldump
 s3BucketName="mysql-schema-info"
 
-#restoreDbHost=$1
-
 #targetDbHost="ci-comparedb01"
 #db_passfile="/opt/.keys/ci-comparedb01.txt"
 targetDbHost="pdev-syosuke20"
@@ -26,20 +24,6 @@ db_passfile="/opt/.keys/pdev_fdb.txt"
 
 
 { # output sh -
-if [ $# != 1 ] ;then
-  echo "Environment" "引数を適切に設定してください。例: ./dbBuid.sh stg1-fdv01"
-  exit 1
-fi
-
-envid=`echo $1|awk -F\- '{print $1}'`
-
-if [ ${#G_MF_ENV} -eq 0 ] ; then
-   errorLog "Environment" "環境識別ファイルが未設定です。"
-   exit 1
-else
-   #環境識別ファイルの定義
-   mf_env=${G_MF_ENV}
-fi
 dbPassFile="/opt/.keys/${mf_env}_fdb.txt"
 
 if [ `id -u` == 0 ]; then

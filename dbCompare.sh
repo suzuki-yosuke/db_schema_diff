@@ -30,14 +30,6 @@ if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ]
   exit 1
 fi
 
-if [ ${#G_MF_ENV} -eq 0 ] ; then
-   errorLog "Environment" "環境識別ファイルが未設定です。"
-   exit 1
-else
-   #環境識別ファイルの定義
-   mf_env=${G_MF_ENV}
-fi
-
 if [ `id -u` == 0 ]; then
    errorLog "実行ユーザチェック" "一般ユーザ権限で実行してください。"
    exit 1
@@ -46,7 +38,7 @@ fi
 if [ -f ${db_passfile} ]; then
    infoLog "DB_Pass" "パスワードファイルの存在を確認しました。"
 else
-   errorLog "DB_Pass" "DBへのログイン情報を読み込めませんでした。 ${targetdb_passfile} を確認してください"
+   errorLog "DB_Pass" "DBへのログイン情報を読み込めませんでした。 ${db_passfile} を確認してください"
    exit 1
 fi
 
@@ -61,8 +53,8 @@ fi
 dbList=${tmpdir}/dbDiff.${G_YYYYMMDD}.txt
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
-dbID=`cat ${targetdb_passfile} | grep db_read | awk '{ print $1 }' | head -1`
-dbPass=`cat ${targetdb_passfile} | grep db_read | awk '{ print $2 }' | head -1`
+dbID=`cat ${db_passfile} | grep db_read | awk '{ print $1 }' | head -1`
+dbPass=`cat ${db_passfile} | grep db_read | awk '{ print $2 }' | head -1`
 rc_schemaCheck="0"
 rc_schemaCheckAll="0"
 
