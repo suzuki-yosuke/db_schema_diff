@@ -17,6 +17,7 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 dbHost=localhost
 dbpassfile="/opt/.keys/pdev_fdb.txt"
 s3passfile="/opt/.keys/s3.cfg"
+s3BucketName="mysql-schema-info"
 
 AWS_ACCESS_KEY_ID=`egrep access_key ${s3passfile} |awk '{print $3}'`
 AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
