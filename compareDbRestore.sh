@@ -14,21 +14,20 @@ tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
-tmp_bkdir=${G_MBOOK_DATA}/tmp/mysqldump
-s3BucketName="mysql-schema-info"
 
 #targetDbHost="ci-comparedb01"
 #db_passfile="/opt/.keys/ci-comparedb01.txt"
 targetDbHost="pdev-syosuke20"
 db_passfile="/opt/.keys/pdev_fdb.txt"
 
+s3BucketName="mysql-schema-info"
 s3passfile="/opt/.keys/s3.cfg"
 AWS_ACCESS_KEY_ID=`egrep access_key ${s3passfile} |awk '{print $3}'`
 AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
 
 
 { # output sh -
-if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ]; then
   errorLog "Environment" "envidを設定して下さい。"
   exit 1
 fi
@@ -46,14 +45,14 @@ else
 fi
 
 ## Dumpダウンロード
-aws s3 sync s3://${s3BucketName}/${envid}/${G_YYYYMMDD} ${tmp_bkdir}/${envid}/${G_YYYYMMDD}
+aws s3 sync s3://${s3BucketName}/${envid}/${G_YYYYMMDD} ${tmpdir}/${envid}/${G_YYYYMMDD}
 
 if [ $? -ne 0 ]; then
   errorLog "DumpDownload" "Dumpファイルのダウンロードに失敗しました"
   exit 1
 fi
 
-dbList="${tmp_bkdir}/${envid}/${G_YYYYMMDD}/db_list.${restoreDbHost}"
+dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${restoreDbHost}"
 
 if [ -f ${dbList} ] ; then
   infoLog "DumpDownload" "データベースのリストの存在を確認しました。"
@@ -65,7 +64,7 @@ all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema
 
 for database in ${all_database}
 do
-  if [ -f "${tmp_bkdir}/${envid}/${G_YYYYMMDD}/${restoreDbHost}_${database}_encrypt.sql.gz" ]; then
+  if [ -f "${tmpdir}/${envid}/${G_YYYYMMDD}/${restoreDbHost}_${database}_encrypt.sql.gz" ]; then
     infoLog "DumpDownload" "${database}のDumpファイルの存在を確認しました。"
   else
     errorLog "DumpDownload" "${database}のDumpファイルの存在を確認できませんでした。"
@@ -75,8 +74,8 @@ done
 
 targetDbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
 targetDbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
-mkdir -p ${tmp_bkdir}/${envid}/${G_YYYYMMDD}
-cd ${tmp_bkdir}/${envid}
+mkdir -p ${tmpdir}/${envid}/${G_YYYYMMDD}
+cd ${tmpdir}/${envid}
 ## Resotore
 for database in ${all_database} ;
 do
@@ -120,6 +119,6 @@ EOF
 
 done
 
-rm -r ${tmp_bkdir}/${envid}/${G_YYYYMMDD}
+rm -r ${tmpdir}/${envid}/${G_YYYYMMDD}
 
 } 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
