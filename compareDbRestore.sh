@@ -24,17 +24,20 @@ db_passfile="/opt/.keys/pdev_fdb.txt"
 
 
 { # output sh -
-dbPassFile="/opt/.keys/${mf_env}_fdb.txt"
+if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+  errorLog "Environment" "envidを設定して下さい。"
+  exit 1
+fi
 
 if [ `id -u` == 0 ]; then
    errorLog "実行ユーザチェック" "一般ユーザ権限で実行してください。"
    exit 1
 fi
 
-if [ -f ${dbPassFile} ]; then
+if [ -f ${db_passfile} ]; then
    infoLog "DB_Pass" "パスワードファイルの存在を確認しました。"
 else
-   errorLog "${loginID}" "DBへのログイン情報を読み込めませんでした。 ${dbPassFile} を確認してください"
+   errorLog "DB_Pass" "DBへのログイン情報を読み込めませんでした。 ${db_passfile} を確認してください"
    exit 1
 fi
 
@@ -66,8 +69,8 @@ do
   fi
 done
 
-targetDbID=`cat ${dbPassFile} | grep db_update | awk '{ print $1 }' | head -1`
-targetDbPass=`cat ${dbPassFile} | grep db_update | awk '{ print $2 }' | head -1`
+targetDbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
+targetDbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 mkdir -p ${tmp_bkdir}/${envid}/${G_YYYYMMDD}
 cd ${tmp_bkdir}/${envid}
 ## Resotore
