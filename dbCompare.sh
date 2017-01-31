@@ -104,5 +104,5 @@ if [ $rc_schemaCheckAll -ne "0" ];then
 fi
 
 #rm ${dbList} ${diffDb}
-rm ${dbList} ${diffDb}
+rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
