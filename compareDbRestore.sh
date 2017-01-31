@@ -47,6 +47,7 @@ else
 fi
 
 ## Dumpダウンロード
+mkdir -p ${tmpdir}/${envid}/${G_YYYYMMDD}
 aws s3 sync s3://${s3BucketName}/${envid}/${G_YYYYMMDD} ${tmpdir}/${envid}/${G_YYYYMMDD}
 
 if [ $? -ne 0 ]; then
