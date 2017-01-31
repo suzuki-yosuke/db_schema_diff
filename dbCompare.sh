@@ -9,22 +9,29 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 shell_name=`basename $0 .sh`
+
 mkdir -p ${WORKSPACE}/{logs,tmp}
 tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
+# データベースアクセス用環境変数定義
 dbHost="pdev-syosuke20"
 db_passfile="/opt/.keys/pdev_fdb.txt"
 
+# S3関連環境変数定義
 s3BucketName="mysql-schema-info"
 s3passfile="/opt/.keys/s3.cfg"
 export AWS_DEFAULT_REGION="ap-northeast-1"
 export AWS_ACCESS_KEY_ID=`egrep access_key ${s3passfile} |awk '{print $3}'`
 export AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
 
-#targetDbHost="pdev-syosuke20.ebisubook.com"
-#compareDbHost="pdev-iida20.ebisubook.com"
+# Slack通知用環境変数定義
+
+username="mysql_diff"
+url='https://hooks.slack.com/services/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'
+channel="mysql_diff"
+icon=":devil:"
 
 { # output block
 if [ ${envid} == "prod" ] && [ ${envid} == "stg1" ] && [ ${envid} == "dev1" ] && [ ${envid} == "pdev" ] ; then
@@ -100,7 +107,16 @@ done
 
 ## Slack通知
 if [ $rc_schemaCheckAll -ne "0" ];then
-    cat ${diffDb}
+    message=`cat ${diffDb}`
+    data=`cat << EOF
+    payload={
+      "channel": "${channel}",
+      "username": "${username}",
+      "icon_emoji": "${icon}",
+      "text": "${message}"
+    }
+EOF`
+    curl -X POST --data-urlencode "$data" $url
 fi
 
 #rm ${dbList} ${diffDb}
