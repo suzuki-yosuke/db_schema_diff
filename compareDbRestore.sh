@@ -57,8 +57,8 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${restoreDbHost}"
-ls -l ${dbList}
+dbListName=`ls ${tmpdir}/${envid}/${G_YYYYMMDD}/|egrep db_list`
+dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}"
 
 if [ -f ${dbList} ] ; then
   infoLog "DumpDownload" "データベースのリストの存在を確認しました。"
