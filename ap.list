@@ -1,6 +1,6 @@
 #account_web
 ca_web
-mf_internal
+#mf_internal
 #elise_classifiers_bin
 #elise_server
 #evora
@@ -13,7 +13,7 @@ mf_internal
 #mfc_aweb
 #my_web
 #oa_web
-pa_web
+#pa_web
 #pfm_aweb
 pfm_web
 #rc_web
