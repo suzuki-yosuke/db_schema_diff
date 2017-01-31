@@ -8,6 +8,12 @@
 #
 
 source /mbook/sys/var/jobroot/conf/global.conf
+shell_name=`basename $0 .sh`
+mkdir -p ${WORKSPACE}/{logs,tmp}
+tmpdir="${WORKSPACE}/tmp"
+logdir="${WORKSPACE}/logs"
+log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
+
 ap_list="./ap.list"
 
 if [ -f ${ap_list} ] ; then
@@ -18,20 +24,6 @@ else
 fi
 
 { # output block
-#if [ $# != 1 ] ;then
-#  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
-#  exit 1
-#fi
-#if [ $1 != prod ] && [ $1 != stg ] && [ $1 != dev ] && [ $1 != pdev ] ;then
-#  echo "Environment" "引数に環境を指定してください。(prod or stg or dev or pdev)"
-#  exit 1
-#fi
-
-#envid=$1
-if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
-  errorLog "Environment" "envidを設定して下さい。"
-  exit 1
-fi
 
 for ap_name in `egrep -v "^#" ${ap_list}`
 do
@@ -41,7 +33,7 @@ do
 
   mv ./config/database.yml ./config/database.yml.org
 
-  sed -e "s/database: \(.*\)/database: \1.${envid}/g" ./config/database.yml.org > ./config/database.yml
+  sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
 
   if [ $? -ne 0 ] ; then
      errorLog "Environment" "database.ymlの変換に失敗しました。"

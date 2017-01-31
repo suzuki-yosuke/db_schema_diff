@@ -8,10 +8,16 @@
 #
 
 source /mbook/sys/var/jobroot/conf/global.conf
+shell_name=`basename $0 .sh`
+mkdir -p ${WORKSPACE}/{logs,tmp}
+tmpdir="${WORKSPACE}/tmp"
+logdir="${WORKSPACE}/logs"
+log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
+
 tmp_bkdir=${G_MBOOK_DATA}/tmp/mysqldump
 s3BucketName="mysql-schema-info"
 
-restoreDbHost=$1
+#restoreDbHost=$1
 
 #targetDbHost="ci-comparedb01"
 #db_passfile="/opt/.keys/ci-comparedb01.txt"

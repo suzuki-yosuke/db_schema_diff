@@ -8,8 +8,13 @@
 #
 
 source /mbook/sys/var/jobroot/conf/global.conf
+shell_name=`basename $0 .sh`
+mkdir -p ${WORKSPACE}/{logs,tmp}
+tmpdir="${WORKSPACE}/tmp"
+logdir="${WORKSPACE}/logs"
+log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
+
 s3cfg="/opt/.keys/s3_mysql-schema-info.txt"
-tmp_bkdir=${WORKSPACE}/tmp/mysqldump
 s3BucketName="mysql-schema-info"
 
 if [ $# -ne 1 ]; then
@@ -17,8 +22,8 @@ if [ $# -ne 1 ]; then
    exit 1
 fi
 
-dbHost=$1
-envid=`echo $1|awk -F\- '{print $1}'`
+#dbHost=$1
+envid=`echo $dbHost|awk -F\- '{print $1}'`
 
 dbEnv=`echo ${dbHost} |awk -F\- '{print $1}'`
 db_passfile="/opt/.keys/${dbEnv}_fdb.txt"
@@ -34,17 +39,16 @@ else
    #環境識別ファイルの定義
    mf_env=${G_MF_ENV}
 fi
-dbPassFile="/opt/.keys/${mf_env}_fdb.txt"
 
 if [ `id -u` == 0 ]; then
    errorLog "実行ユーザチェック" "一般ユーザ権限で実行してください。"
    exit 1
 fi
 
-if [ -f ${dbPassFile} ]; then
+if [ -f ${db_passFile} ]; then
    infoLog "DB_Pass" "パスワードファイルの存在を確認しました。"
 else
-   errorLog "${dbID}" "DBへのログイン情報を読み込めませんでした。 ${dbPassFile} を確認してください"
+   errorLog "${dbID}" "DBへのログイン情報を読み込めませんでした。 ${db_passfile} を確認してください"
    exit 1
 fi
 mkdir -p ${tmp_bkdir}

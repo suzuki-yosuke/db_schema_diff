@@ -25,6 +25,10 @@ AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
 #compareDbHost="pdev-iida20.ebisubook.com"
 
 { # output block
+if [ ${envid} -ne "prod" ] && [ ${envid} -ne "stg1" ] && [ ${envid} -ne "dev1" ] && [ ${envid} -ne "pdev" ] ; then
+  errorLog "Environment" "envidを設定して下さい。"
+  exit 1
+fi
 
 if [ ${#G_MF_ENV} -eq 0 ] ; then
    errorLog "Environment" "環境識別ファイルが未設定です。"
@@ -71,7 +75,7 @@ do
   mysqldiff \
   --server1=${dbID}:${dbPass}@${dbHost} \
   --server2=${dbID}:${dbPass}@${dbHost} \
-  ${dbName}:${envid}_${dbName} >> ${diffDb}
+  ci_${dbName}:${envid}_${dbName} >> ${diffDb}
   rc_schemaCheck=$?
   infoLog "MySQL_DB_CHECK" "スキーマ比較完了($dbName)：RC=${rc_schemaCheck}"
   if [ $rc_schemaCheck -ne "0" ];then
