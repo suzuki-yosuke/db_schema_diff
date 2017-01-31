@@ -28,6 +28,7 @@ fi
 for ap_name in `egrep -v "^#" ${ap_list}`
 do
   # db Migrate
+  infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
   mkdir -p ${WORKSPACE}/${ap_name}
   cd ${WORKSPACE}/${ap_name}
 
@@ -56,5 +57,6 @@ do
      errorLog "Database" "テーブルの作成に失敗しました"
      exit 1
   fi
+  infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
 } 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
