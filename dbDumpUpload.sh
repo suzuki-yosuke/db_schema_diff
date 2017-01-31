@@ -9,6 +9,7 @@
 
 source /mbook/sys/var/jobroot/conf/global.conf
 shell_name=`basename $0 .sh`
+
 mkdir -p ${WORKSPACE}/{logs,tmp}
 tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
@@ -16,11 +17,6 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 s3cfg="/opt/.keys/s3_mysql-schema-info.txt"
 s3BucketName="mysql-schema-info"
-
-if [ $# -ne 1 ]; then
-   errorLog "引数チェック" "引数を確認してください。(Usage:dbDumpUpload.sh ホスト名)"
-   exit 1
-fi
 
 #dbHost=$1
 envid=`echo $dbHost|awk -F\- '{print $1}'`
@@ -32,7 +28,7 @@ dbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
 dbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 
 { # output block
-if [ ${#G_MF_ENV} -eq 0 ] ; then
+if [ ${G_MF_ENV} -eq 0 ] ; then
    errorLog "Environment" "環境識別ファイルが未設定です。"
    exit 1
 else
