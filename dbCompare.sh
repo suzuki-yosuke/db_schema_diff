@@ -74,7 +74,7 @@ do
 
   mysql \
   -u ${dbID} \
-  -p ${dbPass} \
+  -p${dbPass} \
   -h ${dbHost} \
   -e 'show databases'|\
   egrep "ci_${dbName}" >/dev/null 2>&1
