@@ -43,14 +43,15 @@ else
 fi
 
 ## DBリスト取得
-if [ ${envid} -eq "pdev" ]; then
+if [ ${envid} == "pdev" ]; then
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}
 else
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}
 fi
 
 ## ログイン情報取得
-dbList=${tmpdir}/dbDiff.${G_YYYYMMDD}.txt
+dbListName=`ls ${tmpdir}/${envid}/${G_YYYYMMDD}/|egrep db_list`
+dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}"
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
 dbID=`cat ${db_passfile} | grep db_read | awk '{ print $1 }' | head -1`
