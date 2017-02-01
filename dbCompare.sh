@@ -88,7 +88,7 @@ do
     /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
-    ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
+    ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp
     rc_schemaCheck=$?
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
     if [ ${rc_schemaCheck} -ne "0" ];then
