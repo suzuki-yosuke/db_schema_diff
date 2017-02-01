@@ -34,7 +34,7 @@ do
   pwd
   mv ./config/database.yml ./config/database.yml.org
 
-  if [ ${ap_name} != "mf_internal"]; then
+  if [ ${ap_name} != "mf_internal" ]; then
     sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
   fi
 
