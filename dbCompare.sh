@@ -91,9 +91,9 @@ do
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
     rc_schemaCheck=$?
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
-    if [ ${rc_schemaCheck} -ne "0" ];then
+#    if [ ${rc_schemaCheck} -ne "0" ];then
         cat ${diffDb}.tmp >> ${diffDb}
-    fi
+#    fi
   else
       echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
       echo -e "\t ci_${dbName}は存在しません。"　>> ${diffDb}
@@ -106,7 +106,7 @@ do
 done
 
 ## Slack通知
-if [ $rc_schemaCheckAll -ne "0" ];then
+#if [ $rc_schemaCheckAll -ne "0" ];then
     message=`cat ${diffDb}`
     data=`cat << EOF
     payload={
@@ -117,8 +117,8 @@ if [ $rc_schemaCheckAll -ne "0" ];then
     }
 EOF`
     curl -X POST --data-urlencode "$data" $url
-fi
+#fi
 
 #rm ${dbList} ${diffDb}
-rm ${dbList} ${diffDb} ${diffDb}.tmp
-} 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
+#rm ${dbList} ${diffDb} ${diffDb}.tmp
+} 2>&1 | tee -a ${log_file}
