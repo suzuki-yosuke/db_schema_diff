@@ -90,10 +90,10 @@ do
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
     rc_schemaCheck=$?
-    infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName})：RC=${rc_schemaCheck}"
-#    if [ ${rc_schemaCheck} -ne "0" ];then
+    infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
+    if [ ${rc_schemaCheck} -ne "0" ];then
         cat ${diffDb}.tmp >> ${diffDb}
-#    fi
+    fi
   else
       echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
       echo -e "\t ci_${dbName}は存在しません。"　>> ${diffDb}
