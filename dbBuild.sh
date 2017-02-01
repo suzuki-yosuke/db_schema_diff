@@ -31,7 +31,7 @@ do
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
   mkdir -p ${WORKSPACE}/${ap_name}
   cd ${WORKSPACE}/${ap_name}
-
+  pwd
   mv ./config/database.yml ./config/database.yml.org
 
   if [ ${ap_name} != "mf_internal"]; then
