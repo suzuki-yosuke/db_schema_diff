@@ -23,6 +23,13 @@ else
   exit 1
 fi
 
+bundle_install() {
+  # use libmysql 56
+  bundle config --local build.mysql2 --with-mysql-config=/mbook/mware/version/mysql-5.6.23/bin/mysql_config
+  bundle install --quiet --path $WORKSPACE/vendor/bundle --jobs=$TEST_QUEUE_WORKERS --retry=3
+}
+
+
 { # output block
 
 for ap_name in `egrep -v "^#" ${ap_list}`
@@ -31,31 +38,28 @@ do
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
   mkdir -p ${WORKSPACE}/${ap_name}
   cd ${WORKSPACE}/${ap_name}
-  pwd
   mv ./config/database.yml ./config/database.yml.org
 
   if [ ${ap_name} != "mf_internal" ]; then
     sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
   fi
 
-  bash ./ci.sh
+  bundle_install
+  if [ $? -ne 0 ] ; then
+     errorLog "Database" "AP_NAME:${ap_name} bundle installに失敗しました。"
+     exit 1
+  fi
 
-#  bundle install
-#  if [ $? -ne 0 ] ; then
-#     errorLog "Database" "AP_NAME:${ap_name} bundle installに失敗しました。"
-#     exit 1
-#  fi
-#
-#  rake db:create:all
-#  if [ $? -ne 0 ] ; then
-#     errorLog "Database" "AP_NAME:${ap_name} データベースの作成に失敗しました"
-#     exit 1
-#  fi
-#  rake db:structure:load
-#  if [ $? -ne 0 ] ; then
-#     errorLog "Database" "AP_NAME:${ap_name} テーブルの作成に失敗しました"
-#     exit 1
-#  fi
-#  infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
+  rake db:create:all
+  if [ $? -ne 0 ] ; then
+     errorLog "Database" "AP_NAME:${ap_name} データベースの作成に失敗しました"
+     exit 1
+  fi
+  rake db:structure:load
+  if [ $? -ne 0 ] ; then
+     errorLog "Database" "AP_NAME:${ap_name} テーブルの作成に失敗しました"
+     exit 1
+  fi
+  infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
 } 2>&1 | tee -a ${log_file}
