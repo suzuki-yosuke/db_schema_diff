@@ -106,7 +106,7 @@ do
 done
 
 ## Slack通知
-#if [ $rc_schemaCheckAll -ne "0" ];then
+if [ $rc_schemaCheckAll -ne "0" ];then
     message=`cat ${diffDb}`
     data=`cat << EOF
     payload={
@@ -117,8 +117,8 @@ done
     }
 EOF`
     curl -X POST --data-urlencode "$data" $url
-#fi
+fi
 
-#rm ${dbList} ${diffDb}
-#rm ${dbList} ${diffDb} ${diffDb}.tmp
+rm ${dbList} ${diffDb}
+rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file}
