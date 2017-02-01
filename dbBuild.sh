@@ -26,7 +26,7 @@ fi
 bundle_install() {
   # use libmysql 56
   bundle config --local build.mysql2 --with-mysql-config=/mbook/mware/version/mysql-5.6.23/bin/mysql_config
-  bundle install --quiet --path $WORKSPACE/vendor/bundle --jobs=$TEST_QUEUE_WORKERS --retry=3
+  bundle install --quiet --path $WORKSPACE/vendor/bundle --retry=3
 }
 
 
