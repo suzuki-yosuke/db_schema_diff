@@ -58,4 +58,4 @@ do
 #  fi
 #  infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
-} 2>&1 | tee -a ${log_file} ; exit ${PIPESTATUS[0]}
+} 2>&1 | tee -a ${log_file}
