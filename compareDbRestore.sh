@@ -93,7 +93,7 @@ do
   create database ${envid}_${database};
 EOF
   # 復号化
-  openssl enc -d -aes-256-cbc -pass env:DB_BACKUP_ENCRYPTION_KEY \
+  openssl enc -d -aes-256-cbc -pass env:DB_SCHEMABACKUP_ENCRYPTION_KEY \
     -in ${G_YYYYMMDD}/${database}_encrypt.sql.gz -out ${G_YYYYMMDD}/${database}.sql.gz
   if [ $? -eq 0 ];then
     infoLog "MySQL_Restore" "${database}のopenssl復号化完了。"

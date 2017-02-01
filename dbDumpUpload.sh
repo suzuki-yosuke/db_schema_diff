@@ -72,7 +72,7 @@ for database in ${all_database} ;
 do
 
   mysqldump -d -h ${dbHost} -u${dbID} -p${dbPass} ${database} | gzip | \
-    openssl enc -e -aes-256-cbc -pass env:DB_BACKUP_ENCRYPTION_KEY \
+    openssl enc -e -aes-256-cbc -pass env:DB_SCHEMABACKUP_ENCRYPTION_KEY \
     -out ${tmpdir}/${G_YYYYMMDD}/${database}_encrypt.sql.gz
   result=( ${PIPESTATUS[*]} )
      [ ${result[0]} -ne 0 ] && errorLog "MySQL_Backup" "${database}のmysqldump の実行に失敗しました。リターンコード：${result[0]}"      && exit 1
