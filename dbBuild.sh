@@ -29,6 +29,17 @@ bundle_install() {
   bundle install --quiet --path $WORKSPACE/vendor/bundle --retry=3
 }
 
+rename_database_name() {
+  sed -i -E "s/(database:\s*.+)_test\b/ci_\1/g" ./config/database.yml
+}
+
+prepare_database_1() {
+  bundle exec rake db:create:all db:structure:load
+  bin/fast_seed
+}
+prepare_database_2() {
+  bundle exec rake app:db:create:all app:db:migrate
+}
 
 { # output block
 
@@ -36,30 +47,15 @@ for ap_name in `egrep -v "^#" ${ap_list}`
 do
   # db Migrate
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
-  mkdir -p ${WORKSPACE}/${ap_name}
   cd ${WORKSPACE}/${ap_name}
-  mv ./config/database.yml ./config/database.yml.org
-
-  if [ ${ap_name} != "mf_internal" ]; then
-    sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
-  fi
-
   bundle_install
-  if [ $? -ne 0 ] ; then
-     errorLog "Database" "AP_NAME:${ap_name} bundle installに失敗しました。"
-#     exit 1
+  rename_database_name
+  if [ $ap_name == "mf_internal" ] || [ $ap_name == "pa_web" ];then
+    prepare_database_2
+  else
+    prepare_database_1
   fi
 
-  rake db:create:all
-  if [ $? -ne 0 ] ; then
-     errorLog "Database" "AP_NAME:${ap_name} データベースの作成に失敗しました"
-#     exit 1
-  fi
-  rake db:structure:load
-  if [ $? -ne 0 ] ; then
-     errorLog "Database" "AP_NAME:${ap_name} テーブルの作成に失敗しました"
-#     exit 1
-  fi
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
 } 2>&1 | tee -a ${log_file}
