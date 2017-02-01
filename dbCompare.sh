@@ -85,7 +85,7 @@ do
 
   if [ $? -eq "0" ]; then
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}.tmp
-    mysqldiff \
+    /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
