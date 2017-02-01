@@ -47,18 +47,18 @@ do
   bundle_install
   if [ $? -ne 0 ] ; then
      errorLog "Database" "AP_NAME:${ap_name} bundle installに失敗しました。"
-     exit 1
+#     exit 1
   fi
 
   rake db:create:all
   if [ $? -ne 0 ] ; then
      errorLog "Database" "AP_NAME:${ap_name} データベースの作成に失敗しました"
-     exit 1
+#     exit 1
   fi
   rake db:structure:load
   if [ $? -ne 0 ] ; then
      errorLog "Database" "AP_NAME:${ap_name} テーブルの作成に失敗しました"
-     exit 1
+#     exit 1
   fi
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
