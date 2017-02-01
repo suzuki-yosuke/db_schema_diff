@@ -16,7 +16,7 @@ logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 # データベースアクセス用環境変数定義
-dbHost="pdev-syosuke20"
+dbHost="$HOSTNAME"
 db_passfile="/opt/.keys/pdev_fdb.txt"
 
 # S3関連環境変数定義
