@@ -55,7 +55,15 @@ fi
 if [ ${envid} == "pdev" ]; then
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20
 else
+  echo "aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01" 
   aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01
+fi
+
+if [ $? -eq 0 ]; then
+   infoLog "DB_Pass" "DBリストを取得しました。"
+else
+   errorLog "DB_Pass" "DBリストを取得できませんでした。 "
+   exit 1
 fi
 
 ## ログイン情報取得
