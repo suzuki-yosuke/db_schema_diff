@@ -29,8 +29,8 @@ export AWS_SECRET_ACCESS_KEY=`egrep secret_key ${s3passfile} |awk '{print $3}'`
 # Slack通知用環境変数定義
 
 username="mysql_diff"
-url='https://hooks.slack.com/services/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'
-channel="mysql_diff"
+url='https://hooks.slack.com/services/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'
+channel="#mysql_schema_diff"
 icon=":devil:"
 
 { # output block
