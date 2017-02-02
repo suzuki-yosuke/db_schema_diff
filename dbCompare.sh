@@ -53,7 +53,7 @@ fi
 
 
 dbListName=`aws s3 ls s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/|grep db_list |awk '{print $4}'`
-compareDbName=echo ${dbListName}
+dbHostName=`echo ${dbListName}|awk -F. '{print $2}'`
 
 ## DBリスト取得
 aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbListName} ${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}
@@ -90,42 +90,43 @@ do
   egrep "ci_${dbName}" >/dev/null 2>&1
 
   if [ $? -eq "0" ]; then
-    echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" > ${diffDb}.tmp
+    echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
     /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp
+
     rc_schemaCheck=$?
+
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
+
     if [ ${rc_schemaCheck} -ne "0" ];then
         echo "\`\`\`" >> ${diffDb}
         cat ${diffDb}.tmp >> ${diffDb}
         echo "\`\`\`" >> ${diffDb}
     fi
   else
-      echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}
+      echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" >> ${diffDb}
       echo -e "\`\`\`ci_${dbName}は存在しません。\`\`\`"　>> ${diffDb}
       rc_schemaCheck="1"
   fi
 
+  ## Slack通知
   if [ $rc_schemaCheck -ne "0" ];then
-    rc_schemaCheckAll=$rc_schemaCheck
+      message=`cat ${diffDb}`
+      data=`cat << EOF
+      payload={
+        "channel": "${channel}",
+        "username": "${username}",
+        "icon_emoji": "${icon}",
+        "text": "${message}"
+      }
+EOF`
+      curl -X POST --data-urlencode "$data" $url
   fi
 done
 
-## Slack通知
-if [ $rc_schemaCheckAll -ne "0" ];then
-    message=`cat ${diffDb}`
-    data=`cat << EOF
-    payload={
-      "channel": "${channel}",
-      "username": "${username}",
-      "icon_emoji": "${icon}",
-      "text": "${message}"
-    }
-EOF`
-    curl -X POST --data-urlencode "$data" $url
-fi
+
 
 rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file}
