@@ -57,6 +57,7 @@ fi
 mkdir -p ${tmpdir}/${G_YYYYMMDD}&&cd ${tmpdir}
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
+echo "s3cmd put  --config=${s3cfg} ${dbList} s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}"
 s3cmd put  --config=${s3cfg} \
   ${dbList} \
   s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${dbHost}
