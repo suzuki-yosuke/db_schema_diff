@@ -81,7 +81,7 @@ do
   infoLog "MySQL_DB_CHECK" "スキーマ比較開始（ci_$dbName:${envid}_${dbName}）"
 
   # DB Check
-
+  rc_schemaCheck="0"
   mysql \
   -u ${dbID} \
   -p${dbPass} \
@@ -90,6 +90,7 @@ do
   egrep "ci_${dbName}" >/dev/null 2>&1
 
   if [ $? -eq "0" ]; then
+
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
     /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
@@ -106,7 +107,7 @@ do
         echo "\`\`\`" >> ${diffDb}
     fi
   else
-      echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" >> ${diffDb}
+      echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
       echo -e "\`\`\`ci_${dbName}は存在しません。\`\`\`"　>> ${diffDb}
       rc_schemaCheck="1"
   fi
@@ -125,8 +126,6 @@ EOF`
       curl -X POST --data-urlencode "$data" $url
   fi
 done
-
-
 
 rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file}
