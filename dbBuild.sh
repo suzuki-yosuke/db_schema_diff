@@ -30,7 +30,8 @@ bundle_install() {
 }
 
 rename_database_name() {
-  sed -i -E "s/(database:\s*.+)_test\b/ci_\1/g" ./config/database.yml
+  mv ./config/database.yml ./config/database.yml.org
+  sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
 }
 
 prepare_database_1() {
