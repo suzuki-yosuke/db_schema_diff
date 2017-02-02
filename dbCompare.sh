@@ -95,7 +95,7 @@ do
     /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
-    ci_${dbName}:${envid}_${dbName} >> ${diffDb}.tmp
+    ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
 
     rc_schemaCheck=$?
 
