@@ -53,6 +53,7 @@ fi
 
 
 dbListName=`aws s3 ls s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/|grep db_list |awk '{print $4}'`
+compareDbName=echo ${dbListName}
 
 ## DBリスト取得
 aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbListName} ${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}
@@ -89,7 +90,7 @@ do
   egrep "ci_${dbName}" >/dev/null 2>&1
 
   if [ $? -eq "0" ]; then
-    echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" >> ${diffDb}.tmp
+    echo "[Check DBName:ci_$dbName:${envid}_${dbName}]" > ${diffDb}.tmp
     /usr/local/bin/mysqldiff \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
@@ -126,6 +127,5 @@ EOF`
     curl -X POST --data-urlencode "$data" $url
 fi
 
-rm ${dbList} ${diffDb}
 rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file}
