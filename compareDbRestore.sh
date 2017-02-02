@@ -65,7 +65,7 @@ else
   errorLog "DumpDownload" "データベースのリストを確認出来ませんでした。"
   exit 1
 fi
-all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
+all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$|^stg1-fdb01$" `
 
 for database in ${all_database}
 do
