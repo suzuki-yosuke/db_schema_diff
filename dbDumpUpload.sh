@@ -72,7 +72,7 @@ fi
 for database in ${all_database} ;
 do
 
-  mysqldump -d -h ${dbHost} -u${dbID} -p${dbPass} ${database} | gzip | \
+  mysqldump -d --single-transaction -h ${dbHost} -u${dbID} -p${dbPass} ${database} | gzip | \
     openssl enc -e -aes-256-cbc -pass env:DB_SCHEMABACKUP_ENCRYPTION_KEY \
     -out ${tmpdir}/${G_YYYYMMDD}/${database}_encrypt.sql.gz
   result=( ${PIPESTATUS[*]} )
