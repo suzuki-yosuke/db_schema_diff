@@ -51,13 +51,11 @@ else
    exit 1
 fi
 
+
+dbListName=`aws s3 ls s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/|grep db_list |awk '{print $4}'`
+
 ## DBリスト取得
-if [ ${envid} == "pdev" ]; then
-  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.pdev-syosuke20
-else
-  echo "aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01 ${tmpdir}/${envid}/${G_YYYYMMDD}/db_list.${envid}-fdb01"
-  aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/db_list.* ${tmpdir}/${envid}/${G_YYYYMMDD}/
-fi
+aws s3 cp s3://${s3BucketName}/${envid}/${G_YYYYMMDD}/${dbListName} ${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}
 
 if [ $? -eq 0 ]; then
    infoLog "DB_Pass" "DBリストを取得しました。"
@@ -67,7 +65,6 @@ else
 fi
 
 ## ログイン情報取得
-dbListName=`ls ${tmpdir}/${envid}/${G_YYYYMMDD} |egrep db_list`
 dbList="${tmpdir}/${envid}/${G_YYYYMMDD}/${dbListName}"
 all_database=`cat ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
