@@ -83,7 +83,7 @@ do
   case ${ap_name} in
     mf_internal ) prepare_database_mf-internal
                     ;;
-    pa_web )  prepare_database_paweb
+    pa_web )  bundle exec rake db:create:all db:schema:load
                 ;;
     my_web )  prepare_database_myweb
                 ;;
