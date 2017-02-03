@@ -48,13 +48,15 @@ rename_database_name_option_sql() {
 
 prepare_database_1() {
   bundle exec rake db:create:all db:structure:load
-  bin/fast_seed
 }
 prepare_database_2() {
   bundle exec rake app:db:create:all app:db:migrate
 }
 prepare_database_3() {
   bundle exec rake ridgepole:apply
+}
+prepare_database_4() {
+  bundle exec rake db:create:all db:structure:load db:migrate
 }
 
 { # output block
@@ -69,22 +71,22 @@ do
 
   # Database名の変換
   case ${ap_name} in
-    "mf_internal" ) echo "mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal ./config/database.yml"
+    mf_internal ) echo "mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal ./config/database.yml"
                     mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal ./config/database.yml
                     echo "RC:$?"
                     ;;
-    "*" ) rename_database_name
+    * ) rename_database_name
           ;;
   esac
   # Database マイグレーション
   case ${ap_name} in
-    "mf_internal" ) prepare_database_2
+    mf_internal ) prepare_database_2
                     ;;
-    "pa_web" )  prepare_database_2
+    pa_web )  prepare_database_4
                 ;;
-    "my_web" )  prepare_database_3
+    my_web )  prepare_database_3
                 ;;
-    "ca_web" )  prepare_database_1
+    ca_web )  prepare_database_1
                 targetdb="ci_ca_production"
                 option_sql="${WORKSPACE}/ca_web/db/structure.sql"
                 echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
@@ -95,7 +97,7 @@ do
                 echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
                 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
                 ;;
-    "*" ) prepare_database_1
+    * ) prepare_database_1
           ;;
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
