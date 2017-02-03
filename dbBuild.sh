@@ -50,7 +50,7 @@ rename_database_name_option_sql() {
 prepare_database_common() {
   bundle exec rake db:create:all db:structure:load
 }
-prepare_database_mf-internal() {
+prepare_database_mfinternal() {
   bundle exec rake app:db:create:all app:db:migrate
 }
 prepare_database_myweb() {
