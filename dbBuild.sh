@@ -47,16 +47,16 @@ rename_database_name_option_sql() {
     sed -e "s/ ca_production/ ci_ca_production/g" > ${option_sql}
 }
 
-prepare_database_1() {
+prepare_database_common() {
   bundle exec rake db:create:all db:structure:load
 }
-prepare_database_2() {
+prepare_database_mf-internal() {
   bundle exec rake app:db:create:all app:db:migrate
 }
-prepare_database_3() {
+prepare_database_myweb() {
   bundle exec rake db:create:all ridgepole:apply
 }
-prepare_database_4() {
+prepare_database_paweb() {
   bundle exec rake db:create:all db:schema:load
 }
 
@@ -81,13 +81,13 @@ do
   esac
   # Database マイグレーション
   case ${ap_name} in
-    mf_internal ) prepare_database_2
+    mf_internal ) prepare_database_mf-internal
                     ;;
-    pa_web )  prepare_database_4
+    pa_web )  prepare_database_paweb
                 ;;
-    my_web )  prepare_database_3
+    my_web )  prepare_database_myweb
                 ;;
-    ca_web )  prepare_database_1
+    ca_web )  prepare_database_common
                 targetdb="ci_ca_production"
                 option_sql="${WORKSPACE}/ca_web/db/structure.sql"
                 echo "mysql ≈ ${targetdb} < ${option_sql}"
@@ -98,7 +98,7 @@ do
                 echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
                 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
                 ;;
-    * ) prepare_database_1
+    * ) prepare_database_common
         ;;
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
