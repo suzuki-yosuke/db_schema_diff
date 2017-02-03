@@ -53,7 +53,7 @@ else
    exit 1
 fi
 
-all_database=`egrep "^prod|^stg|^pdev|^ci" ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
+all_database=`egrep "^prod|^stg1|^dev1|^pdev|^ci" ${dbList} | egrep -v "^information_schema$|^performance_schema$|^mysql$|^test$|^innodb$|^Database$|^sys$" `
 
 # DB Drop
 for database in ${all_database} ;
