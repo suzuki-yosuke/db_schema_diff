@@ -81,13 +81,13 @@ do
   esac
   # Database マイグレーション
   case ${ap_name} in
-    mf_internal ) prepare_database_mf-internal
+    mf_internal ) bundle exec rake app:db:create:all app:db:migrate
                     ;;
     pa_web )  bundle exec rake db:create:all db:schema:load
                 ;;
     my_web )  bundle exec rake db:create:all ridgepole:apply
                 ;;
-    ca_web )  prepare_database_common
+    ca_web )  bundle exec rake db:create:all db:structure:load
                 targetdb="ci_ca_production"
                 option_sql="${WORKSPACE}/ca_web/db/structure.sql"
                 echo "mysql ≈ ${targetdb} < ${option_sql}"
@@ -98,7 +98,7 @@ do
                 echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
                 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
                 ;;
-    * ) prepare_database_common
+    * ) bundle exec rake db:create:all db:structure:load
         ;;
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
