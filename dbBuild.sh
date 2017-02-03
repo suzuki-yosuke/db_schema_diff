@@ -77,7 +77,7 @@ do
                     echo "RC:$?"
                     ;;
     * ) rename_database_name
-          ;;
+        ;;
   esac
   # Database マイグレーション
   case ${ap_name} in
@@ -99,12 +99,12 @@ do
                 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
                 ;;
     * ) prepare_database_1
-          ;;
+        ;;
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
 
-cd ${WORKSPAC}/mf_mysql_trigger
+cd ${WORKSPACE}/mf_mysql_trigger
 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} -D ci_moneybook_api_production < ./ddl/create_triggers.sql
 
 } 2>&1 | tee -a ${log_file}
