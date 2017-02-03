@@ -62,7 +62,7 @@ do
   elif [ $ap_name == "ca_web" ];then
     prepare_database_1
     targetdb="ci_ca_production"
-    option_sql="${WORKSPACE}/sys_deploy/blob/develop/lib/capistrano/sql/setup.img_ca_production.sql"
+    option_sql="${WORKSPACE}/sys_deploy/lib/capistrano/sql/setup.img_ca_production.sql"
     mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
   else
     prepare_database_1
