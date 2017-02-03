@@ -16,6 +16,12 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 ap_list="./ap.list"
 
+db_passfile="/opt/.keys/pdev_fdb.txt"
+targetDbHost="${HOSTNAME}"
+targetDbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
+targetDbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
+
+
 if [ -f ${ap_list} ] ; then
    infoLog "AP_CHECK" "対象のアプリケーションを確認しました"
 else
@@ -53,6 +59,11 @@ do
   rename_database_name
   if [ $ap_name == "mf_internal" ] || [ $ap_name == "pa_web" ];then
     prepare_database_2
+  elif [ $ap_name == "ca_web" ];then
+    prepare_database_1
+    targetdb="ci_ca_production"
+    option_sql="${WORKSPACE}/sys_deploy/blob/develop/lib/capistrano/sql/setup.img_ca_production.sql"
+    mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
   else
     prepare_database_1
   fi

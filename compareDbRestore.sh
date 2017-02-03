@@ -17,8 +17,10 @@ log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
 #targetDbHost="ci-comparedb01"
 #db_passfile="/opt/.keys/ci-comparedb01.txt"
-targetDbHost="${HOSTNAME}"
 db_passfile="/opt/.keys/pdev_fdb.txt"
+targetDbHost="${HOSTNAME}"
+targetDbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
+targetDbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 
 s3BucketName="mysql-schema-info"
 s3passfile="/opt/.keys/s3.cfg"
@@ -77,8 +79,6 @@ do
   fi
 done
 
-targetDbID=`cat ${db_passfile} | grep db_update | awk '{ print $1 }' | head -1`
-targetDbPass=`cat ${db_passfile} | grep db_update | awk '{ print $2 }' | head -1`
 mkdir -p ${tmpdir}/${envid}/${G_YYYYMMDD}
 cd ${tmpdir}/${envid}
 ## Resotore
