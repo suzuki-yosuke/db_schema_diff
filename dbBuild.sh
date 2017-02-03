@@ -53,7 +53,7 @@ prepare_database_2() {
   bundle exec rake app:db:create:all app:db:migrate
 }
 prepare_database_3() {
-  bundle exec rake ridgepole:apply
+  bundle exec rake db:create:all ridgepole:apply
 }
 prepare_database_4() {
   bundle exec rake db:create:all db:structure:load db:migrate
@@ -89,7 +89,7 @@ do
     ca_web )  prepare_database_1
                 targetdb="ci_ca_production"
                 option_sql="${WORKSPACE}/ca_web/db/structure.sql"
-                echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
+                echo "mysql ≈ ${targetdb} < ${option_sql}"
                 mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
 
                 option_sql="${WORKSPACE}/sys_deploy/lib/capistrano/sql/setup.img_ca_production.sql"
@@ -102,4 +102,8 @@ do
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
+
+cd ${WORKSPAC}/mf_mysql_trigger
+mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} -D ci_moneybook_api_production < ./ddl/create_triggers.sql
+
 } 2>&1 | tee -a ${log_file}
