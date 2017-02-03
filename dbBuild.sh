@@ -40,10 +40,11 @@ rename_database_name() {
   sed -e "s/database: \(.*\)/database: ci_\1/g" ./config/database.yml.org > ./config/database.yml
 }
 rename_database_name_option_sql() {
+    echo "mv ${option_sql} ${option_sql}.org"
     mv ${option_sql} ${option_sql}.org
+    echo "sed -e "s/CREATE DATABASE IF NOT EXISTS \(.*\)/CREATE DATABASE IF NOT EXISTS ci_\1/g" ${option_sql}.org > ${option_sql}"
     sed -e "s/CREATE DATABASE IF NOT EXISTS \(.*\)/CREATE DATABASE IF NOT EXISTS ci_\1/g" ${option_sql}.org > ${option_sql}
 }
-
 
 prepare_database_1() {
   bundle exec rake db:create:all db:structure:load
@@ -62,17 +63,27 @@ for ap_name in `egrep -v "^#" ${ap_list}`
 do
   # db Migrate
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
+
   cd ${WORKSPACE}/${ap_name}
   bundle_install
 
-  rename_database_name
-
+  # Database名の変換
   case ${ap_name} in
-    "mf_internal" ) mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal \
-                    ./config/database.yml
-                    prepare_database_2;;
-    "pa_web" )  prepare_database_2;;
-    "my_web" )  prepare_database_3;;
+    "mf_internal" ) echo "mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal ./config/database.yml"
+                    mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal ./config/database.yml
+                    echo "RC:$?"
+                    ;;
+    "*" ) rename_database_name
+          ;;
+  esac
+  # Database マイグレーション
+  case ${ap_name} in
+    "mf_internal" ) prepare_database_2
+                    ;;
+    "pa_web" )  prepare_database_2
+                ;;
+    "my_web" )  prepare_database_3
+                ;;
     "ca_web" )  prepare_database_1
                 targetdb="ci_ca_production"
                 option_sql="${WORKSPACE}/ca_web/db/structure.sql"
@@ -82,8 +93,10 @@ do
                 option_sql="${WORKSPACE}/sys_deploy/lib/capistrano/sql/setup.img_ca_production.sql"
                 rename_database_name_option_sql
                 echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
-                mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql};;
-    * ) prepare_database_1
+                mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
+                ;;
+    "*" ) prepare_database_1
+          ;;
   esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
