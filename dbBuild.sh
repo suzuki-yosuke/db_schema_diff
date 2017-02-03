@@ -43,7 +43,7 @@ rename_database_name_option_sql() {
     echo "mv ${option_sql} ${option_sql}.org"
     mv ${option_sql} ${option_sql}.org
     echo "sed -e "s/CREATE DATABASE IF NOT EXISTS \(.*\)/CREATE DATABASE IF NOT EXISTS ci_\1/g" ${option_sql}.org > ${option_sql}"
-    sed -e "s/CREATE DATABASE IF NOT EXISTS \(.*\)/CREATE DATABASE IF NOT EXISTS ci_\1/g" ${option_sql}.org > ${option_sql}
+    sed -e "s/img_ca_production/ci_img_ca_production/g" ${option_sql}.org > ${option_sql}
 }
 
 prepare_database_1() {
