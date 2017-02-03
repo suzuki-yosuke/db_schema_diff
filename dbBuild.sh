@@ -64,28 +64,27 @@ do
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを開始します。"
   cd ${WORKSPACE}/${ap_name}
   bundle_install
+
   rename_database_name
-  if [ $ap_name == "mf_internal" ] || [ $ap_name == "pa_web" ];then
-    prepare_database_2
-  elif [ $ap_name == "my_web" ];then
-    prepare_database_3
-  elif [ $ap_name == "ca_web" ];then
-    prepare_database_1
-    targetdb="ci_ca_production"
 
-    option_sql="${WORKSPACE}/ca_web/db/structure.sql"
-    echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
-    mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
+  case ${ap_name} in
+    "mf_internal" ) mv ${WORKSPACE}/mysql_schema_diff/config/database.yml.mf_internal \
+                    ./config/database.yml
+                    prepare_database_2;;
+    "pa_web" )  prepare_database_2;;
+    "my_web" )  prepare_database_3;;
+    "ca_web" )  prepare_database_1
+                targetdb="ci_ca_production"
+                option_sql="${WORKSPACE}/ca_web/db/structure.sql"
+                echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
+                mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
 
-    option_sql="${WORKSPACE}/sys_deploy/lib/capistrano/sql/setup.img_ca_production.sql"
-    rename_database_name_option_sql
-    echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
-    mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}
-
-  else
-    prepare_database_1
-  fi
-
+                option_sql="${WORKSPACE}/sys_deploy/lib/capistrano/sql/setup.img_ca_production.sql"
+                rename_database_name_option_sql
+                echo "mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql}"
+                mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${targetdb} < ${option_sql};;
+    * ) prepare_database_1
+  esac
   infoLog "AP_CHECK" "AP_NAME:${ap_name} migrateを完了しました。"
 done
 } 2>&1 | tee -a ${log_file}
