@@ -85,7 +85,7 @@ do
                     ;;
     pa_web )  bundle exec rake db:create:all db:schema:load
                 ;;
-    my_web )  prepare_database_myweb
+    my_web )  bundle exec rake db:create:all ridgepole:apply
                 ;;
     ca_web )  prepare_database_common
                 targetdb="ci_ca_production"
