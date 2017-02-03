@@ -57,7 +57,7 @@ prepare_database_3() {
   bundle exec rake db:create:all ridgepole:apply
 }
 prepare_database_4() {
-  bundle exec rake db:create:all db:structure:load db:migrate
+  bundle exec rake db:create:all db:schema:load
 }
 
 { # output block
