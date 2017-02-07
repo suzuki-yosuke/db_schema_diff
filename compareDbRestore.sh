@@ -115,7 +115,8 @@ EOF
   # リストア
   sed -e 's/AUTO_INCREMENT=[0-9]*//g' ${G_YYYYMMDD}/${database}.sql |\
   sed -e 's/ROW_FORMAT=COMPRESSED//g'|\
-  sed -e 's/KEY_BLOCK_SIZE=[0-9]*//g' > ${G_YYYYMMDD}/${database}_sed.sql
+  sed -e 's/KEY_BLOCK_SIZE=[0-9]*//g'|\
+  sed -e 's/40101 SET character_set_client = utf8/40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin/g' > ${G_YYYYMMDD}/${database}_sed.sql
 
   mysql -h ${targetDbHost} -u${targetDbID} -p${targetDbPass} ${envid}_${database} < ${G_YYYYMMDD}/${database}_sed.sql
 
