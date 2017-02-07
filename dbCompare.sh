@@ -138,28 +138,15 @@ do
 
   ## Slack通知
   if [ $rc_schemaCheck -ne "0" ];then
-    if [ ${diff_type} == "sql" ]
     data=`cat << EOF
     payload={
       "channel": "${channel}",
       "username": "${username}",
       "icon_emoji": "${icon}",
-      "text": "${message}"
+      "text": "${message}",
       "attachments": "${tmpdir}/ci_${dbName}.sql"
       }
 EOF`
-    else
-      message=`cat ${diffDb}`
-      data=`cat << EOF
-      payload={
-        "channel": "${channel}",
-        "username": "${username}",
-        "icon_emoji": "${icon}",
-        "text": "${message}"
-      }
-EOF`
-      fi
-
       curl -X POST --data-urlencode "$data" $url
   fi
 done
