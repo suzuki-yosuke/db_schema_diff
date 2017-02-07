@@ -87,15 +87,14 @@ do
   # DB Check
   rc_schemaCheck="0"
 
-  mysql \
-  -u ${dbID} \
-  -p${dbPass} \
-  -h ${dbHost} \
-  -e "ALTER DATABASE ci_${dbName} COLLATE = utf8mb4_general_ci" #>/dev/null 2>&1
+#  mysql \
+#  -u ${dbID} \
+#  -p${dbPass} \
+#  -h ${dbHost} \
+#  -e "ALTER DATABASE ci_${dbName} COLLATE = utf8mb4_general_ci" >/dev/null 2>&1
 
-　# Add SQL
-
-  if [ -f "${config_dir}ci_${dbName}.sql" ];then
+  if [ -f "${config_dir}ci_${dbName}.sql" ]; then
+    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
     mysql \
     -u ${dbID} \
     -p${dbPass} \
@@ -114,7 +113,7 @@ do
 
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql \
-    /usr/local/bin/mysqldiff --force --skip-table-options\
+    /usr/local/bin/mysqldiff --force --skip-table-options --difftype=differ\
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
