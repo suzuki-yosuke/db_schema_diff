@@ -114,7 +114,7 @@ do
 
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql \
-    /usr/local/bin/mysqldiff --force \
+    /usr/local/bin/mysqldiff --force --skip-table-options\
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
