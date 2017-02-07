@@ -84,6 +84,13 @@ do
 
   # DB Check
   rc_schemaCheck="0"
+
+  mysql \
+  -u ${dbID} \
+  -p${dbPass} \
+  -h ${dbHost} \
+  -e "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci" >/dev/null 2>&1
+
   mysql \
   -u ${dbID} \
   -p${dbPass} \
@@ -94,7 +101,7 @@ do
   if [ $? -eq "0" ]; then
 
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
-    /usr/local/bin/mysqldiff --difftype=sql \
+    /usr/local/bin/mysqldiff --force \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
