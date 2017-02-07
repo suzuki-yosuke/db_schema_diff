@@ -85,11 +85,12 @@ do
   # DB Check
   rc_schemaCheck="0"
 
+  echo "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci"
   mysql \
   -u ${dbID} \
   -p${dbPass} \
   -h ${dbHost} \
-  -e "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci" >/dev/null 2>&1
+  -e "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci" #>/dev/null 2>&1
 
   mysql \
   -u ${dbID} \
