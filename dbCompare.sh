@@ -138,7 +138,6 @@ do
       "username": "${username}",
       "icon_emoji": "${icon}",
       "text": "${message}",
-      "attachments": "${tmpdir}/ci_${dbName}.sql"
       }
 EOF`
       curl -X POST --data-urlencode "$data" $url
