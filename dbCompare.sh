@@ -137,7 +137,7 @@ do
       "channel": "${channel}",
       "username": "${username}",
       "icon_emoji": "${icon}",
-      "text": "${message}",
+      "text": "${message}"
       }
 EOF`
       curl -X POST --data-urlencode "$data" $url
