@@ -87,13 +87,7 @@ do
   # DB Check
   rc_schemaCheck="0"
 
-#  mysql \
-#  -u ${dbID} \
-#  -p${dbPass} \
-#  -h ${dbHost} \
-#  -e "ALTER DATABASE ci_${dbName} COLLATE = utf8mb4_general_ci" >/dev/null 2>&1
-
-  if [ -f "${config_dir}ci_${dbName}.sql" ]; then
+  if [ -f "${config_dir}/ci_${dbName}.sql" ]; then
     echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
     mysql \
     -u ${dbID} \
