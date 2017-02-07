@@ -119,11 +119,11 @@ do
 
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
 
-    if [ ${rc_schemaCheck} -ne "0" ];then
+#    if [ ${rc_schemaCheck} -ne "0" ];then
         echo "\`\`\`" >> ${diffDb}
         cat ${diffDb}.tmp >> ${diffDb}
         echo "\`\`\`" >> ${diffDb}
-    fi
+#    fi
   else
       echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
       echo -e "\`\`\`ci_${dbName}は存在しません。\`\`\`"　>> ${diffDb}
@@ -131,7 +131,7 @@ do
   fi
 
   ## Slack通知
-  if [ $rc_schemaCheck -ne "0" ];then
+#  if [ $rc_schemaCheck -ne "0" ];then
     data=`cat << EOF
     payload={
       "channel": "${channel}",
@@ -141,7 +141,7 @@ do
       }
 EOF`
       curl -X POST --data-urlencode "$data" $url
-  fi
+#  fi
 done
 
 rm ${dbList} ${diffDb} ${diffDb}.tmp
