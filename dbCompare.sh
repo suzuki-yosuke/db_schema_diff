@@ -15,6 +15,8 @@ tmpdir="${WORKSPACE}/tmp"
 logdir="${WORKSPACE}/logs"
 log_file="${logdir}/${shell_name}.${G_YYYYMMDD}.log"
 
+config_dir="${WORKSPACE}/mysql_schema_diff/config"
+
 # データベースアクセス用環境変数定義
 dbHost="$HOSTNAME"
 db_passfile="/opt/.keys/pdev_fdb.txt"
@@ -85,12 +87,21 @@ do
   # DB Check
   rc_schemaCheck="0"
 
-  echo "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci"
   mysql \
   -u ${dbID} \
   -p${dbPass} \
   -h ${dbHost} \
   -e "ALTER DATABASE ci_${dbName} COLLATE = utf8mb4_general_ci" #>/dev/null 2>&1
+
+　# Add SQL
+
+  if [ -f "${config_dir}ci_${dbName}.sql" ];then
+    mysql \
+    -u ${dbID} \
+    -p${dbPass} \
+    -h ${dbHost} \
+    ci_${dbName} < ${config_dir}/ci_${dbName}.sql
+  fi
 
   mysql \
   -u ${dbID} \
@@ -103,7 +114,8 @@ do
 
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql \
-    /usr/local/bin/mysqldiff --force \
+#    /usr/local/bin/mysqldiff --force \
+    /usr/local/bin/mysqldiff --force --difftype=sql \
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
