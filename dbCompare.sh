@@ -90,7 +90,7 @@ do
   -u ${dbID} \
   -p${dbPass} \
   -h ${dbHost} \
-  -e "ALTER DATABASE ${dbName} COLLATE = utf8mb4_general_ci" #>/dev/null 2>&1
+  -e "ALTER DATABASE ci_${dbName} COLLATE = utf8mb4_general_ci" #>/dev/null 2>&1
 
   mysql \
   -u ${dbID} \
