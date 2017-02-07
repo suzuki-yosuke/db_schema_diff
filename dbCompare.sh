@@ -120,6 +120,8 @@ do
 
     rc_schemaCheck=$?
 
+    cat ${diffDb}.tmp > ${diffDb}.output
+
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
 
     if [ ${rc_schemaCheck} -ne "0" ];then
@@ -144,7 +146,7 @@ do
         "text": "${message}"
       }
 EOF`
-      curl -X POST --data-urlencode "$data" $url
+#      curl -X POST --data-urlencode "$data" $url
   fi
 done
 
