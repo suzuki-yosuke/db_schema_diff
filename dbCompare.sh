@@ -87,14 +87,14 @@ do
   # DB Check
   rc_schemaCheck="0"
 
-#  if [ -f "${config_dir}/ci_${dbName}.sql" ]; then
-#    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
-#    mysql \
-#    -u ${dbID} \
-#    -p${dbPass} \
-#    -h ${dbHost} \
-#    ci_${dbName} < ${config_dir}/ci_${dbName}.sql
-#  fi
+  if [ -f "${config_dir}/ci_${dbName}.sql" ]; then
+    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
+    mysql \
+    -u ${dbID} \
+    -p${dbPass} \
+    -h ${dbHost} \
+    ci_${dbName} < ${config_dir}/ci_${dbName}.sql
+  fi
 
   mysql \
   -u ${dbID} \
@@ -133,10 +133,11 @@ do
       "channel": "${channel}",
       "username": "${username}",
       "icon_emoji": "${icon}",
-      "text": "${message}"
+      "text": "${diffDb}"
       }
 EOF`
-      curl -X POST --data-urlencode "$data" $url
+      curl -X POST --data-urlencode "$data" ${url}
+      echo "curl -X POST --data-urlencode $data ${url}:RC=$?"
   fi
 done
 
