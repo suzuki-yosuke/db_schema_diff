@@ -1,2 +1,2 @@
-alter table envid_img_mf_production.additional_request_media row_format=compresse;
-alter table envid_img_mf_production.transaction_file row_format=compresse;
+alter table envid_img_mf_production.additional_request_media row_format=compressed;
+alter table envid_img_mf_production.transaction_file row_format=compressed;
