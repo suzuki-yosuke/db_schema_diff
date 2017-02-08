@@ -94,6 +94,17 @@ do
     -p${dbPass} \
     -h ${dbHost} \
     ci_${dbName} < ${config_dir}/ci_${dbName}.sql
+    echo "ADD SQL ci_${dbName}:RC $?"
+  fi
+  if [ -f "${config_dir}/compare_${dbName}.sql" ]; then
+    sed -e "s/envid/${envid}/g" ${config_dir} > ${config_dir}/${envid}_${dbName}.sql
+    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/${envid}_${dbName}.sql"
+    mysql \
+    -u ${dbID} \
+    -p${dbPass} \
+    -h ${dbHost} \
+    ${envid}_${dbName} < ${config_dir}/${envid}_${dbName}.sql
+    echo "ADD SQL ${envid}_${dbName}:RC $?"
   fi
 
   mysql \
@@ -109,7 +120,6 @@ do
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${tmpdir}/ci_${dbName}.sql
-    echo "Make SQL ${dbName}:RC $?"
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql --skip-table-options\
     /usr/local/bin/mysqldiff --force\
