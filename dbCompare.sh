@@ -109,6 +109,7 @@ do
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${tmpdir}/ci_${dbName}.sql
+    echo "Make SQL ${dbName}:RC $?"
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql --skip-table-options\
     /usr/local/bin/mysqldiff --force\
@@ -142,7 +143,6 @@ do
       }
 EOF`
       curl -X POST --data-urlencode "$data" ${url}
-      echo "curl -X POST --data-urlencode $data ${url}:RC=$?"
   fi
 done
 
