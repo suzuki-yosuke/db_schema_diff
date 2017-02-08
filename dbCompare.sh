@@ -143,7 +143,7 @@ do
 
   ## Slack通知
   if [ $rc_schemaCheck -ne "0" ];then
-    message=`cat ${diffDb}`
+    message=`grep -v "^# Comparing.*\[PASS\]" ${diffDb}`
     cat ${diffDb}>${tmpdir}/ci_${dbName}.diff
     data=`cat << EOF
     payload={
