@@ -107,15 +107,11 @@ do
 
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql --skip-table-options\
-    /usr/local/bin/mysqldiff --force --difftype=${diff_type}\
+    /usr/local/bin/mysqldiff --force\
     --server1=${dbID}:${dbPass}@${dbHost} \
     --server2=${dbID}:${dbPass}@${dbHost} \
     ci_${dbName}:${envid}_${dbName} > ${diffDb}.tmp
     rc_schemaCheck=$?
-
-    if [ ${diff_type} == "sql" ];then
-      cat ${diffDb}.tmp > ${tmpdir}/ci_${dbName}.sql
-    fi
 
     infoLog "MySQL_DB_CHECK" "スキーマ比較完了(ci_$dbName:${envid}_${dbName}) RC=${rc_schemaCheck}"
 
