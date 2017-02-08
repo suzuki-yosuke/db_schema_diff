@@ -105,6 +105,10 @@ do
 
   if [ $? -eq "0" ]; then
 
+    /usr/local/bin/mysqldiff --force --difftype=sql\
+    --server1=${dbID}:${dbPass}@${dbHost} \
+    --server2=${dbID}:${dbPass}@${dbHost} \
+    ci_${dbName}:${envid}_${dbName} > ${tmpdir}/ci_${dbName}.sql
     echo "[Check DBName:ci_$dbName:${envid}_${dbName}(${dbHostName})]" > ${diffDb}
 #    /usr/local/bin/mysqldiff --force --difftype=sql --skip-table-options\
     /usr/local/bin/mysqldiff --force\
