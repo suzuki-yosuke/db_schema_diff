@@ -97,7 +97,7 @@ do
     echo "ADD SQL ci_${dbName}:RC $?"
   fi
   if [ -f "${config_dir}/compare_${dbName}.sql" ]; then
-    sed -e "s/envid/${envid}/g" ${config_dir} > ${config_dir}/${envid}_${dbName}.sql
+    sed -e "s/envid/${envid}/g" ${config_dir}/compare_${dbName}.sql > ${config_dir}/${envid}_${dbName}.sql
     echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/${envid}_${dbName}.sql"
     mysql \
     -u ${dbID} \
