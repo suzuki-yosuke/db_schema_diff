@@ -5,2319 +5,2058 @@
 #    PROCEDURE: update_log
 #    PROCEDURE: update_log_with_extra
 #    PROCEDURE: update_log_when_manual_account
+# WARNING: Objects in server1.prod_moneybook_api_production but not in server1.ci_moneybook_api_production:
+#      TRIGGER: access_token_delete_trigger
 # Comparing `ci_moneybook_api_production` to `prod_moneybook_api_production`   [FAIL]
+
+# WARNING: Cannot generate SQL statements for these objects.
+# Check the difference output for other discrepencies.
+--- `ci_moneybook_api_production`
++++ `prod_moneybook_api_production`
+@@ -1 +1 @@
+-CREATE DATABASE `ci_moneybook_api_production` /*!40100 DEFAULT CHARACTER SET utf8mb4 */
++CREATE DATABASE `prod_moneybook_api_production` /*!40100 DEFAULT CHARACTER SET utf8mb4 */
+# Comparing `ci_moneybook_api_production`.`access_log` to `prod_moneybook_api_production`.`access_log`   [FAIL]
 # Transformation for --changes-for=server1:
 #
 
-ALTER DATABASE ci_moneybook_api_production COLLATE = utf8mb4_general_ci;
+ALTER TABLE `ci_moneybook_api_production`.`access_log` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
 
-# Comparing `ci_moneybook_api_production`.`access_log` to `prod_moneybook_api_production`.`access_log`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`access_log`
-# +++ `prod_moneybook_api_production`.`access_log`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`access_token` to `prod_moneybook_api_production`.`access_token`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`access_token`
-# +++ `prod_moneybook_api_production`.`access_token`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account` to `prod_moneybook_api_production`.`account`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account`
-# +++ `prod_moneybook_api_production`.`account`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_copies` to `prod_moneybook_api_production`.`account_copies`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_copies`
-# +++ `prod_moneybook_api_production`.`account_copies`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_copy_tokens` to `prod_moneybook_api_production`.`account_copy_tokens`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_copy_tokens`
-# +++ `prod_moneybook_api_production`.`account_copy_tokens`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_data` to `prod_moneybook_api_production`.`account_data`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_data`
-# +++ `prod_moneybook_api_production`.`account_data`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_data_expiry` to `prod_moneybook_api_production`.`account_data_expiry`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_data_expiry`
-# +++ `prod_moneybook_api_production`.`account_data_expiry`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_data_request` to `prod_moneybook_api_production`.`account_data_request`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_data_request`
-# +++ `prod_moneybook_api_production`.`account_data_request`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_ic_card_masters` to `prod_moneybook_api_production`.`account_ic_card_masters`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_ic_card_masters`
-# +++ `prod_moneybook_api_production`.`account_ic_card_masters`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_logs` to `prod_moneybook_api_production`.`account_logs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_logs`
-# +++ `prod_moneybook_api_production`.`account_logs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_miscs` to `prod_moneybook_api_production`.`account_miscs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_miscs`
-# +++ `prod_moneybook_api_production`.`account_miscs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`account_pre_registrations` to `prod_moneybook_api_production`.`account_pre_registrations`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`account_pre_registrations`
-# +++ `prod_moneybook_api_production`.`account_pre_registrations`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`act_status` to `prod_moneybook_api_production`.`act_status`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`act_status`
-# +++ `prod_moneybook_api_production`.`act_status`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`ad_track_info` to `prod_moneybook_api_production`.`ad_track_info`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`ad_track_info`
-# +++ `prod_moneybook_api_production`.`ad_track_info`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`additional_request` to `prod_moneybook_api_production`.`additional_request`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`additional_request`
-# +++ `prod_moneybook_api_production`.`additional_request`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`admin_mail` to `prod_moneybook_api_production`.`admin_mail`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`admin_mail`
-# +++ `prod_moneybook_api_production`.`admin_mail`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`admin_temporary_password_logs` to `prod_moneybook_api_production`.`admin_temporary_password_logs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`admin_temporary_password_logs`
-# +++ `prod_moneybook_api_production`.`admin_temporary_password_logs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`admin_user` to `prod_moneybook_api_production`.`admin_user`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`admin_user`
-# +++ `prod_moneybook_api_production`.`admin_user`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`admin_user_email_modification_logs` to `prod_moneybook_api_production`.`admin_user_email_modification_logs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`admin_user_email_modification_logs`
-# +++ `prod_moneybook_api_production`.`admin_user_email_modification_logs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`advertisement` to `prod_moneybook_api_production`.`advertisement`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`advertisement`
-# +++ `prod_moneybook_api_production`.`advertisement`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`advertising_id_accounts` to `prod_moneybook_api_production`.`advertising_id_accounts`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`advertising_id_accounts`
-# +++ `prod_moneybook_api_production`.`advertising_id_accounts`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`affiliate` to `prod_moneybook_api_production`.`affiliate`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`affiliate`
-# +++ `prod_moneybook_api_production`.`affiliate`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`affiliate_conversions` to `prod_moneybook_api_production`.`affiliate_conversions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`affiliate_conversions`
-# +++ `prod_moneybook_api_production`.`affiliate_conversions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
+# Comparing `ci_moneybook_api_production`.`access_token` to `prod_moneybook_api_production`.`access_token`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`access_token` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account` to `prod_moneybook_api_production`.`account`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_copies` to `prod_moneybook_api_production`.`account_copies`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_copies` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_copy_tokens` to `prod_moneybook_api_production`.`account_copy_tokens`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_copy_tokens` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_data` to `prod_moneybook_api_production`.`account_data`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_data` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_data_expiry` to `prod_moneybook_api_production`.`account_data_expiry`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_data_expiry` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_data_request` to `prod_moneybook_api_production`.`account_data_request`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_data_request` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_ic_card_masters` to `prod_moneybook_api_production`.`account_ic_card_masters`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_ic_card_masters` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_logs` to `prod_moneybook_api_production`.`account_logs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_logs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_miscs` to `prod_moneybook_api_production`.`account_miscs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_miscs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`account_pre_registrations` to `prod_moneybook_api_production`.`account_pre_registrations`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`account_pre_registrations` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`act_status` to `prod_moneybook_api_production`.`act_status`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`act_status` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`ad_track_info` to `prod_moneybook_api_production`.`ad_track_info`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`ad_track_info` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`additional_request` to `prod_moneybook_api_production`.`additional_request`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`additional_request` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`admin_mail` to `prod_moneybook_api_production`.`admin_mail`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`admin_mail` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`admin_temporary_password_logs` to `prod_moneybook_api_production`.`admin_temporary_password_logs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`admin_temporary_password_logs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`admin_user` to `prod_moneybook_api_production`.`admin_user`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`admin_user` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`admin_user_email_modification_logs` to `prod_moneybook_api_production`.`admin_user_email_modification_logs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`admin_user_email_modification_logs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`advertisement` to `prod_moneybook_api_production`.`advertisement`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`advertisement` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`advertising_id_accounts` to `prod_moneybook_api_production`.`advertising_id_accounts`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`advertising_id_accounts` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`affiliate` to `prod_moneybook_api_production`.`affiliate`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`affiliate` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`affiliate_conversions` to `prod_moneybook_api_production`.`affiliate_conversions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`affiliate_conversions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
 # Comparing `ci_moneybook_api_production`.`aggre_log` to `prod_moneybook_api_production`.`aggre_log`   [FAIL]
 # Transformation for --changes-for=server1:
 #
 
-ALTER TABLE `ci_moneybook_api_production`.`aggre_log`;
+ALTER TABLE `ci_moneybook_api_production`.`aggre_log` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
 # WARNING: Partition transformation is not supported in this release.
 # Please check the table definitions for partition changes.
 
 # WARNING: Partition changes were not generated (not supported).
-# Comparing `ci_moneybook_api_production`.`aggre_override` to `prod_moneybook_api_production`.`aggre_override`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggre_override`
-# +++ `prod_moneybook_api_production`.`aggre_override`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`aggre_overwrite` to `prod_moneybook_api_production`.`aggre_overwrite`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggre_overwrite`
-# +++ `prod_moneybook_api_production`.`aggre_overwrite`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`aggre_proxy` to `prod_moneybook_api_production`.`aggre_proxy`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggre_proxy`
-# +++ `prod_moneybook_api_production`.`aggre_proxy`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`aggre_queue` to `prod_moneybook_api_production`.`aggre_queue`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggre_queue`
-# +++ `prod_moneybook_api_production`.`aggre_queue`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`aggre_skip` to `prod_moneybook_api_production`.`aggre_skip`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggre_skip`
-# +++ `prod_moneybook_api_production`.`aggre_skip`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`aggregation_queue` to `prod_moneybook_api_production`.`aggregation_queue`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`aggregation_queue`
-# +++ `prod_moneybook_api_production`.`aggregation_queue`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`annual_report_housing_cost_rates` to `prod_moneybook_api_production`.`annual_report_housing_cost_rates`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`annual_report_housing_cost_rates`
-# +++ `prod_moneybook_api_production`.`annual_report_housing_cost_rates`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`annual_report_ideal_spendings` to `prod_moneybook_api_production`.`annual_report_ideal_spendings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`annual_report_ideal_spendings`
-# +++ `prod_moneybook_api_production`.`annual_report_ideal_spendings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`app_type` to `prod_moneybook_api_production`.`app_type`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`app_type`
-# +++ `prod_moneybook_api_production`.`app_type`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`app_version_ctrl` to `prod_moneybook_api_production`.`app_version_ctrl`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`app_version_ctrl`
-# +++ `prod_moneybook_api_production`.`app_version_ctrl`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
+# Comparing `ci_moneybook_api_production`.`aggre_override` to `prod_moneybook_api_production`.`aggre_override`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggre_override` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`aggre_overwrite` to `prod_moneybook_api_production`.`aggre_overwrite`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggre_overwrite` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`aggre_proxy` to `prod_moneybook_api_production`.`aggre_proxy`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggre_proxy` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`aggre_queue` to `prod_moneybook_api_production`.`aggre_queue`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggre_queue` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`aggre_skip` to `prod_moneybook_api_production`.`aggre_skip`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggre_skip` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`aggregation_queue` to `prod_moneybook_api_production`.`aggregation_queue`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`aggregation_queue` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`annual_report_housing_cost_rates` to `prod_moneybook_api_production`.`annual_report_housing_cost_rates`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`annual_report_housing_cost_rates` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`annual_report_ideal_spendings` to `prod_moneybook_api_production`.`annual_report_ideal_spendings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`annual_report_ideal_spendings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`app_type` to `prod_moneybook_api_production`.`app_type`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`app_type` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`app_version_ctrl` to `prod_moneybook_api_production`.`app_version_ctrl`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`app_version_ctrl` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
 # Comparing `ci_moneybook_api_production`.`article` to `prod_moneybook_api_production`.`article`   [PASS]
-# Comparing `ci_moneybook_api_production`.`article_large_category` to `prod_moneybook_api_production`.`article_large_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`article_large_category`
-# +++ `prod_moneybook_api_production`.`article_large_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`article_middle_category` to `prod_moneybook_api_production`.`article_middle_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`article_middle_category`
-# +++ `prod_moneybook_api_production`.`article_middle_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`article_small_category` to `prod_moneybook_api_production`.`article_small_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`article_small_category`
-# +++ `prod_moneybook_api_production`.`article_small_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`asset_class` to `prod_moneybook_api_production`.`asset_class`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`asset_class`
-# +++ `prod_moneybook_api_production`.`asset_class`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`asset_subclass` to `prod_moneybook_api_production`.`asset_subclass`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`asset_subclass`
-# +++ `prod_moneybook_api_production`.`asset_subclass`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`auto_category_rule` to `prod_moneybook_api_production`.`auto_category_rule`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`auto_category_rule`
-# +++ `prod_moneybook_api_production`.`auto_category_rule`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`auto_charge_partner` to `prod_moneybook_api_production`.`auto_charge_partner`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`auto_charge_partner`
-# +++ `prod_moneybook_api_production`.`auto_charge_partner`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`bod_coupon_users` to `prod_moneybook_api_production`.`bod_coupon_users`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`bod_coupon_users`
-# +++ `prod_moneybook_api_production`.`bod_coupon_users`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`bod_coupons` to `prod_moneybook_api_production`.`bod_coupons`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`bod_coupons`
-# +++ `prod_moneybook_api_production`.`bod_coupons`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`budgets` to `prod_moneybook_api_production`.`budgets`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`budgets`
-# +++ `prod_moneybook_api_production`.`budgets`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`bus_station_cybernetic_codes` to `prod_moneybook_api_production`.`bus_station_cybernetic_codes`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`bus_station_cybernetic_codes`
-# +++ `prod_moneybook_api_production`.`bus_station_cybernetic_codes`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`calendar` to `prod_moneybook_api_production`.`calendar`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`calendar`
-# +++ `prod_moneybook_api_production`.`calendar`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`client_info` to `prod_moneybook_api_production`.`client_info`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`client_info`
-# +++ `prod_moneybook_api_production`.`client_info`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`client_info_item` to `prod_moneybook_api_production`.`client_info_item`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`client_info_item`
-# +++ `prod_moneybook_api_production`.`client_info_item`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`client_info_item_master` to `prod_moneybook_api_production`.`client_info_item_master`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`client_info_item_master`
-# +++ `prod_moneybook_api_production`.`client_info_item_master`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`common_status` to `prod_moneybook_api_production`.`common_status`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`common_status`
-# +++ `prod_moneybook_api_production`.`common_status`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company` to `prod_moneybook_api_production`.`company`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company`
-# +++ `prod_moneybook_api_production`.`company`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_affiliate` to `prod_moneybook_api_production`.`company_affiliate`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_affiliate`
-# +++ `prod_moneybook_api_production`.`company_affiliate`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_bank_cost` to `prod_moneybook_api_production`.`company_bank_cost`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_bank_cost`
-# +++ `prod_moneybook_api_production`.`company_bank_cost`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_bank_foreign_deposit` to `prod_moneybook_api_production`.`company_bank_foreign_deposit`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_bank_foreign_deposit`
-# +++ `prod_moneybook_api_production`.`company_bank_foreign_deposit`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_bank_transaction_fee` to `prod_moneybook_api_production`.`company_bank_transaction_fee`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_bank_transaction_fee`
-# +++ `prod_moneybook_api_production`.`company_bank_transaction_fee`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_bank_transaction_fee_atm` to `prod_moneybook_api_production`.`company_bank_transaction_fee_atm`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_bank_transaction_fee_atm`
-# +++ `prod_moneybook_api_production`.`company_bank_transaction_fee_atm`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_campaign` to `prod_moneybook_api_production`.`company_campaign`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_campaign`
-# +++ `prod_moneybook_api_production`.`company_campaign`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_card` to `prod_moneybook_api_production`.`company_card`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_card`
-# +++ `prod_moneybook_api_production`.`company_card`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_card_loan` to `prod_moneybook_api_production`.`company_card_loan`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_card_loan`
-# +++ `prod_moneybook_api_production`.`company_card_loan`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_drv_cost` to `prod_moneybook_api_production`.`company_drv_cost`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_drv_cost`
-# +++ `prod_moneybook_api_production`.`company_drv_cost`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_drv_currency_pair` to `prod_moneybook_api_production`.`company_drv_currency_pair`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_drv_currency_pair`
-# +++ `prod_moneybook_api_production`.`company_drv_currency_pair`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_drv_details` to `prod_moneybook_api_production`.`company_drv_details`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_drv_details`
-# +++ `prod_moneybook_api_production`.`company_drv_details`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_drv_leverage` to `prod_moneybook_api_production`.`company_drv_leverage`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_drv_leverage`
-# +++ `prod_moneybook_api_production`.`company_drv_leverage`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_drv_swap_cost` to `prod_moneybook_api_production`.`company_drv_swap_cost`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_drv_swap_cost`
-# +++ `prod_moneybook_api_production`.`company_drv_swap_cost`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_feature` to `prod_moneybook_api_production`.`company_feature`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_feature`
-# +++ `prod_moneybook_api_production`.`company_feature`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product` to `prod_moneybook_api_production`.`company_product`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product`
-# +++ `prod_moneybook_api_production`.`company_product`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review` to `prod_moneybook_api_production`.`company_product_review`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review`
-# +++ `prod_moneybook_api_production`.`company_product_review`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review_criteria` to `prod_moneybook_api_production`.`company_product_review_criteria`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review_criteria`
-# +++ `prod_moneybook_api_production`.`company_product_review_criteria`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review_detail` to `prod_moneybook_api_production`.`company_product_review_detail`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review_detail`
-# +++ `prod_moneybook_api_production`.`company_product_review_detail`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review_detail_rating` to `prod_moneybook_api_production`.`company_product_review_detail_rating`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review_detail_rating`
-# +++ `prod_moneybook_api_production`.`company_product_review_detail_rating`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review_detail_reference` to `prod_moneybook_api_production`.`company_product_review_detail_reference`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review_detail_reference`
-# +++ `prod_moneybook_api_production`.`company_product_review_detail_reference`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_product_review_rating_average` to `prod_moneybook_api_production`.`company_product_review_rating_average`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_product_review_rating_average`
-# +++ `prod_moneybook_api_production`.`company_product_review_rating_average`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_renewal_ranking` to `prod_moneybook_api_production`.`company_renewal_ranking`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_renewal_ranking`
-# +++ `prod_moneybook_api_production`.`company_renewal_ranking`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_renewal_ranking_name` to `prod_moneybook_api_production`.`company_renewal_ranking_name`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_renewal_ranking_name`
-# +++ `prod_moneybook_api_production`.`company_renewal_ranking_name`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_sec_details` to `prod_moneybook_api_production`.`company_sec_details`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_sec_details`
-# +++ `prod_moneybook_api_production`.`company_sec_details`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_sec_line` to `prod_moneybook_api_production`.`company_sec_line`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_sec_line`
-# +++ `prod_moneybook_api_production`.`company_sec_line`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_sec_margin_trade` to `prod_moneybook_api_production`.`company_sec_margin_trade`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_sec_margin_trade`
-# +++ `prod_moneybook_api_production`.`company_sec_margin_trade`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`company_sec_physical_share` to `prod_moneybook_api_production`.`company_sec_physical_share`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`company_sec_physical_share`
-# +++ `prod_moneybook_api_production`.`company_sec_physical_share`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`currency_rates_hst` to `prod_moneybook_api_production`.`currency_rates_hst`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`currency_rates_hst`
-# +++ `prod_moneybook_api_production`.`currency_rates_hst`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`cybernetic_code_works` to `prod_moneybook_api_production`.`cybernetic_code_works`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`cybernetic_code_works`
-# +++ `prod_moneybook_api_production`.`cybernetic_code_works`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`daily_access_log` to `prod_moneybook_api_production`.`daily_access_log`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`daily_access_log`
-# +++ `prod_moneybook_api_production`.`daily_access_log`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`dist` to `prod_moneybook_api_production`.`dist`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`dist`
-# +++ `prod_moneybook_api_production`.`dist`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`dist_detail` to `prod_moneybook_api_production`.`dist_detail`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`dist_detail`
-# +++ `prod_moneybook_api_production`.`dist_detail`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`dist_status` to `prod_moneybook_api_production`.`dist_status`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`dist_status`
-# +++ `prod_moneybook_api_production`.`dist_status`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`ekispert_stations` to `prod_moneybook_api_production`.`ekispert_stations`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`ekispert_stations`
-# +++ `prod_moneybook_api_production`.`ekispert_stations`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`electronic_money` to `prod_moneybook_api_production`.`electronic_money`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`electronic_money`
-# +++ `prod_moneybook_api_production`.`electronic_money`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`embedded_content` to `prod_moneybook_api_production`.`embedded_content`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`embedded_content`
-# +++ `prod_moneybook_api_production`.`embedded_content`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`error` to `prod_moneybook_api_production`.`error`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`error`
-# +++ `prod_moneybook_api_production`.`error`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`ex_sub_account_lists` to `prod_moneybook_api_production`.`ex_sub_account_lists`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`ex_sub_account_lists`
-# +++ `prod_moneybook_api_production`.`ex_sub_account_lists`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`faq` to `prod_moneybook_api_production`.`faq`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`faq`
-# +++ `prod_moneybook_api_production`.`faq`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`faq_category` to `prod_moneybook_api_production`.`faq_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`faq_category`
-# +++ `prod_moneybook_api_production`.`faq_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`feedback` to `prod_moneybook_api_production`.`feedback`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`feedback`
-# +++ `prod_moneybook_api_production`.`feedback`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`for_x_application_groups` to `prod_moneybook_api_production`.`for_x_application_groups`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`for_x_application_groups`
-# +++ `prod_moneybook_api_production`.`for_x_application_groups`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`for_x_applications` to `prod_moneybook_api_production`.`for_x_applications`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`for_x_applications`
-# +++ `prod_moneybook_api_production`.`for_x_applications`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`for_x_media_timeline_filters` to `prod_moneybook_api_production`.`for_x_media_timeline_filters`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`for_x_media_timeline_filters`
-# +++ `prod_moneybook_api_production`.`for_x_media_timeline_filters`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`foreign_currency` to `prod_moneybook_api_production`.`foreign_currency`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`foreign_currency`
-# +++ `prod_moneybook_api_production`.`foreign_currency`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`ic_card_masters` to `prod_moneybook_api_production`.`ic_card_masters`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`ic_card_masters`
-# +++ `prod_moneybook_api_production`.`ic_card_masters`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`institutions` to `prod_moneybook_api_production`.`institutions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`institutions`
-# +++ `prod_moneybook_api_production`.`institutions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`interest_groups` to `prod_moneybook_api_production`.`interest_groups`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`interest_groups`
-# +++ `prod_moneybook_api_production`.`interest_groups`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`interests` to `prod_moneybook_api_production`.`interests`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`interests`
-# +++ `prod_moneybook_api_production`.`interests`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_invitees` to `prod_moneybook_api_production`.`introduce_friends_campaign_invitees`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`introduce_friends_campaign_invitees`
-# +++ `prod_moneybook_api_production`.`introduce_friends_campaign_invitees`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_inviters` to `prod_moneybook_api_production`.`introduce_friends_campaign_inviters`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`introduce_friends_campaign_inviters`
-# +++ `prod_moneybook_api_production`.`introduce_friends_campaign_inviters`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_product_key_types` to `prod_moneybook_api_production`.`introduce_friends_campaign_product_key_types`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`introduce_friends_campaign_product_key_types`
-# +++ `prod_moneybook_api_production`.`introduce_friends_campaign_product_key_types`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`introduce_friends_campaigns` to `prod_moneybook_api_production`.`introduce_friends_campaigns`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`introduce_friends_campaigns`
-# +++ `prod_moneybook_api_production`.`introduce_friends_campaigns`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`invitation` to `prod_moneybook_api_production`.`invitation`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`invitation`
-# +++ `prod_moneybook_api_production`.`invitation`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`invitation_incentive` to `prod_moneybook_api_production`.`invitation_incentive`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`invitation_incentive`
-# +++ `prod_moneybook_api_production`.`invitation_incentive`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`keyword` to `prod_moneybook_api_production`.`keyword`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`keyword`
-# +++ `prod_moneybook_api_production`.`keyword`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`large_category` to `prod_moneybook_api_production`.`large_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`large_category`
-# +++ `prod_moneybook_api_production`.`large_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`large_category_spending_types` to `prod_moneybook_api_production`.`large_category_spending_types`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`large_category_spending_types`
-# +++ `prod_moneybook_api_production`.`large_category_spending_types`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`login_log` to `prod_moneybook_api_production`.`login_log`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`login_log`
-# +++ `prod_moneybook_api_production`.`login_log`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mail_message` to `prod_moneybook_api_production`.`mail_message`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mail_message`
-# +++ `prod_moneybook_api_production`.`mail_message`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mail_queue` to `prod_moneybook_api_production`.`mail_queue`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mail_queue`
-# +++ `prod_moneybook_api_production`.`mail_queue`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mail_template` to `prod_moneybook_api_production`.`mail_template`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mail_template`
-# +++ `prod_moneybook_api_production`.`mail_template`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mail_type` to `prod_moneybook_api_production`.`mail_type`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mail_type`
-# +++ `prod_moneybook_api_production`.`mail_type`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`manetoku_access_logs` to `prod_moneybook_api_production`.`manetoku_access_logs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`manetoku_access_logs`
-# +++ `prod_moneybook_api_production`.`manetoku_access_logs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`manetoku_categories` to `prod_moneybook_api_production`.`manetoku_categories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`manetoku_categories`
-# +++ `prod_moneybook_api_production`.`manetoku_categories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`manetoku_categorizations` to `prod_moneybook_api_production`.`manetoku_categorizations`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`manetoku_categorizations`
-# +++ `prod_moneybook_api_production`.`manetoku_categorizations`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`manetoku_category_taggings` to `prod_moneybook_api_production`.`manetoku_category_taggings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`manetoku_category_taggings`
-# +++ `prod_moneybook_api_production`.`manetoku_category_taggings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline` to `prod_moneybook_api_production`.`media_timeline`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline`
-# +++ `prod_moneybook_api_production`.`media_timeline`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_categories` to `prod_moneybook_api_production`.`media_timeline_categories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_categories`
-# +++ `prod_moneybook_api_production`.`media_timeline_categories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_category_taggings` to `prod_moneybook_api_production`.`media_timeline_category_taggings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_category_taggings`
-# +++ `prod_moneybook_api_production`.`media_timeline_category_taggings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_fixed_row` to `prod_moneybook_api_production`.`media_timeline_fixed_row`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_fixed_row`
-# +++ `prod_moneybook_api_production`.`media_timeline_fixed_row`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_media_timeline_fixed_row` to `prod_moneybook_api_production`.`media_timeline_media_timeline_fixed_row`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_media_timeline_fixed_row`
-# +++ `prod_moneybook_api_production`.`media_timeline_media_timeline_fixed_row`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_media_timeline_tag` to `prod_moneybook_api_production`.`media_timeline_media_timeline_tag`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_media_timeline_tag`
-# +++ `prod_moneybook_api_production`.`media_timeline_media_timeline_tag`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`media_timeline_tag` to `prod_moneybook_api_production`.`media_timeline_tag`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`media_timeline_tag`
-# +++ `prod_moneybook_api_production`.`media_timeline_tag`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings` to `prod_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings`
-# +++ `prod_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_free_premium_term_history` to `prod_moneybook_api_production`.`mf_free_premium_term_history`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_free_premium_term_history`
-# +++ `prod_moneybook_api_production`.`mf_free_premium_term_history`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key` to `prod_moneybook_api_production`.`mf_product_key`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key`
-# +++ `prod_moneybook_api_production`.`mf_product_key`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key_service` to `prod_moneybook_api_production`.`mf_product_key_service`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key_service`
-# +++ `prod_moneybook_api_production`.`mf_product_key_service`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key_type` to `prod_moneybook_api_production`.`mf_product_key_type`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key_type`
-# +++ `prod_moneybook_api_production`.`mf_product_key_type`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key_type_group` to `prod_moneybook_api_production`.`mf_product_key_type_group`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key_type_group`
-# +++ `prod_moneybook_api_production`.`mf_product_key_type_group`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key_type_group_list` to `prod_moneybook_api_production`.`mf_product_key_type_group_list`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key_type_group_list`
-# +++ `prod_moneybook_api_production`.`mf_product_key_type_group_list`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mf_product_key_user` to `prod_moneybook_api_production`.`mf_product_key_user`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mf_product_key_user`
-# +++ `prod_moneybook_api_production`.`mf_product_key_user`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mfsc_agent` to `prod_moneybook_api_production`.`mfsc_agent`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mfsc_agent`
-# +++ `prod_moneybook_api_production`.`mfsc_agent`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mfsc_agent_token` to `prod_moneybook_api_production`.`mfsc_agent_token`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mfsc_agent_token`
-# +++ `prod_moneybook_api_production`.`mfsc_agent_token`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mfsc_service` to `prod_moneybook_api_production`.`mfsc_service`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mfsc_service`
-# +++ `prod_moneybook_api_production`.`mfsc_service`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mfsc_session` to `prod_moneybook_api_production`.`mfsc_session`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mfsc_session`
-# +++ `prod_moneybook_api_production`.`mfsc_session`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`mfsc_session_account` to `prod_moneybook_api_production`.`mfsc_session_account`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`mfsc_session_account`
-# +++ `prod_moneybook_api_production`.`mfsc_session_account`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`middle_category` to `prod_moneybook_api_production`.`middle_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`middle_category`
-# +++ `prod_moneybook_api_production`.`middle_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`monthly_access_log` to `prod_moneybook_api_production`.`monthly_access_log`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`monthly_access_log`
-# +++ `prod_moneybook_api_production`.`monthly_access_log`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`naive_bayes_classifiers` to `prod_moneybook_api_production`.`naive_bayes_classifiers`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`naive_bayes_classifiers`
-# +++ `prod_moneybook_api_production`.`naive_bayes_classifiers`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`naive_bayes_params` to `prod_moneybook_api_production`.`naive_bayes_params`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`naive_bayes_params`
-# +++ `prod_moneybook_api_production`.`naive_bayes_params`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`naive_bayes_statistic` to `prod_moneybook_api_production`.`naive_bayes_statistic`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`naive_bayes_statistic`
-# +++ `prod_moneybook_api_production`.`naive_bayes_statistic`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`no_aggre_service` to `prod_moneybook_api_production`.`no_aggre_service`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`no_aggre_service`
-# +++ `prod_moneybook_api_production`.`no_aggre_service`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`notification_message` to `prod_moneybook_api_production`.`notification_message`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`notification_message`
-# +++ `prod_moneybook_api_production`.`notification_message`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`oauth_access_grants` to `prod_moneybook_api_production`.`oauth_access_grants`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`oauth_access_grants`
-# +++ `prod_moneybook_api_production`.`oauth_access_grants`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`oauth_access_tokens` to `prod_moneybook_api_production`.`oauth_access_tokens`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`oauth_access_tokens`
-# +++ `prod_moneybook_api_production`.`oauth_access_tokens`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`oauth_applications` to `prod_moneybook_api_production`.`oauth_applications`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`oauth_applications`
-# +++ `prod_moneybook_api_production`.`oauth_applications`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`oauth_info` to `prod_moneybook_api_production`.`oauth_info`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`oauth_info`
-# +++ `prod_moneybook_api_production`.`oauth_info`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`oauth_openid_requests` to `prod_moneybook_api_production`.`oauth_openid_requests`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`oauth_openid_requests`
-# +++ `prod_moneybook_api_production`.`oauth_openid_requests`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`office_sub_account_group_list` to `prod_moneybook_api_production`.`office_sub_account_group_list`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`office_sub_account_group_list`
-# +++ `prod_moneybook_api_production`.`office_sub_account_group_list`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
+# Comparing `ci_moneybook_api_production`.`article_large_category` to `prod_moneybook_api_production`.`article_large_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`article_large_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`article_middle_category` to `prod_moneybook_api_production`.`article_middle_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`article_middle_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`article_small_category` to `prod_moneybook_api_production`.`article_small_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`article_small_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`asset_class` to `prod_moneybook_api_production`.`asset_class`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`asset_class` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`asset_subclass` to `prod_moneybook_api_production`.`asset_subclass`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`asset_subclass` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`auto_category_rule` to `prod_moneybook_api_production`.`auto_category_rule`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`auto_category_rule` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`auto_charge_partner` to `prod_moneybook_api_production`.`auto_charge_partner`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`auto_charge_partner` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`bod_coupon_users` to `prod_moneybook_api_production`.`bod_coupon_users`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`bod_coupon_users` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`bod_coupons` to `prod_moneybook_api_production`.`bod_coupons`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`bod_coupons` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`budgets` to `prod_moneybook_api_production`.`budgets`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`budgets` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`bus_station_cybernetic_codes` to `prod_moneybook_api_production`.`bus_station_cybernetic_codes`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`bus_station_cybernetic_codes` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`calendar` to `prod_moneybook_api_production`.`calendar`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`calendar` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`client_info` to `prod_moneybook_api_production`.`client_info`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`client_info` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`client_info_item` to `prod_moneybook_api_production`.`client_info_item`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`client_info_item` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`client_info_item_master` to `prod_moneybook_api_production`.`client_info_item_master`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`client_info_item_master` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`common_status` to `prod_moneybook_api_production`.`common_status`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`common_status` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company` to `prod_moneybook_api_production`.`company`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_affiliate` to `prod_moneybook_api_production`.`company_affiliate`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_affiliate` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_bank_cost` to `prod_moneybook_api_production`.`company_bank_cost`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_bank_cost` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_bank_foreign_deposit` to `prod_moneybook_api_production`.`company_bank_foreign_deposit`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_bank_foreign_deposit` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_bank_transaction_fee` to `prod_moneybook_api_production`.`company_bank_transaction_fee`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_bank_transaction_fee` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_bank_transaction_fee_atm` to `prod_moneybook_api_production`.`company_bank_transaction_fee_atm`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_bank_transaction_fee_atm` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_campaign` to `prod_moneybook_api_production`.`company_campaign`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_campaign` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_card` to `prod_moneybook_api_production`.`company_card`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_card` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_card_loan` to `prod_moneybook_api_production`.`company_card_loan`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_card_loan` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_drv_cost` to `prod_moneybook_api_production`.`company_drv_cost`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_drv_cost` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_drv_currency_pair` to `prod_moneybook_api_production`.`company_drv_currency_pair`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_drv_currency_pair` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_drv_details` to `prod_moneybook_api_production`.`company_drv_details`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_drv_details` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_drv_leverage` to `prod_moneybook_api_production`.`company_drv_leverage`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_drv_leverage` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_drv_swap_cost` to `prod_moneybook_api_production`.`company_drv_swap_cost`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_drv_swap_cost` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_feature` to `prod_moneybook_api_production`.`company_feature`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_feature` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product` to `prod_moneybook_api_production`.`company_product`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review` to `prod_moneybook_api_production`.`company_product_review`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review_criteria` to `prod_moneybook_api_production`.`company_product_review_criteria`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review_criteria` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review_detail` to `prod_moneybook_api_production`.`company_product_review_detail`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review_detail` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review_detail_rating` to `prod_moneybook_api_production`.`company_product_review_detail_rating`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review_detail_rating` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review_detail_reference` to `prod_moneybook_api_production`.`company_product_review_detail_reference`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review_detail_reference` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_product_review_rating_average` to `prod_moneybook_api_production`.`company_product_review_rating_average`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_product_review_rating_average` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_renewal_ranking` to `prod_moneybook_api_production`.`company_renewal_ranking`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_renewal_ranking` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_renewal_ranking_name` to `prod_moneybook_api_production`.`company_renewal_ranking_name`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_renewal_ranking_name` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_sec_details` to `prod_moneybook_api_production`.`company_sec_details`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_sec_details` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_sec_line` to `prod_moneybook_api_production`.`company_sec_line`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_sec_line` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_sec_margin_trade` to `prod_moneybook_api_production`.`company_sec_margin_trade`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_sec_margin_trade` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`company_sec_physical_share` to `prod_moneybook_api_production`.`company_sec_physical_share`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`company_sec_physical_share` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`currency_rates_hst` to `prod_moneybook_api_production`.`currency_rates_hst`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`currency_rates_hst` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`cybernetic_code_works` to `prod_moneybook_api_production`.`cybernetic_code_works`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`cybernetic_code_works` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`daily_access_log` to `prod_moneybook_api_production`.`daily_access_log`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`daily_access_log` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`dist` to `prod_moneybook_api_production`.`dist`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`dist` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`dist_detail` to `prod_moneybook_api_production`.`dist_detail`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`dist_detail` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`dist_status` to `prod_moneybook_api_production`.`dist_status`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`dist_status` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`ekispert_stations` to `prod_moneybook_api_production`.`ekispert_stations`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`ekispert_stations` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`electronic_money` to `prod_moneybook_api_production`.`electronic_money`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`electronic_money` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`embedded_content` to `prod_moneybook_api_production`.`embedded_content`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`embedded_content` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`error` to `prod_moneybook_api_production`.`error`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`error` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`ex_sub_account_lists` to `prod_moneybook_api_production`.`ex_sub_account_lists`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`ex_sub_account_lists` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`faq` to `prod_moneybook_api_production`.`faq`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`faq` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`faq_category` to `prod_moneybook_api_production`.`faq_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`faq_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`feedback` to `prod_moneybook_api_production`.`feedback`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`feedback` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`for_x_application_groups` to `prod_moneybook_api_production`.`for_x_application_groups`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`for_x_application_groups` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`for_x_applications` to `prod_moneybook_api_production`.`for_x_applications`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`for_x_applications` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`for_x_media_timeline_filters` to `prod_moneybook_api_production`.`for_x_media_timeline_filters`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`for_x_media_timeline_filters` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`foreign_currency` to `prod_moneybook_api_production`.`foreign_currency`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`foreign_currency` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`ic_card_masters` to `prod_moneybook_api_production`.`ic_card_masters`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`ic_card_masters` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`institutions` to `prod_moneybook_api_production`.`institutions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`institutions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`interest_groups` to `prod_moneybook_api_production`.`interest_groups`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`interest_groups` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`interests` to `prod_moneybook_api_production`.`interests`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`interests` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_invitees` to `prod_moneybook_api_production`.`introduce_friends_campaign_invitees`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`introduce_friends_campaign_invitees` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_inviters` to `prod_moneybook_api_production`.`introduce_friends_campaign_inviters`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`introduce_friends_campaign_inviters` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`introduce_friends_campaign_product_key_types` to `prod_moneybook_api_production`.`introduce_friends_campaign_product_key_types`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`introduce_friends_campaign_product_key_types` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`introduce_friends_campaigns` to `prod_moneybook_api_production`.`introduce_friends_campaigns`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`introduce_friends_campaigns` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`invitation` to `prod_moneybook_api_production`.`invitation`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`invitation` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`invitation_incentive` to `prod_moneybook_api_production`.`invitation_incentive`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`invitation_incentive` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`keyword` to `prod_moneybook_api_production`.`keyword`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`keyword` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`large_category` to `prod_moneybook_api_production`.`large_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`large_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`large_category_spending_types` to `prod_moneybook_api_production`.`large_category_spending_types`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`large_category_spending_types` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`login_log` to `prod_moneybook_api_production`.`login_log`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`login_log` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mail_message` to `prod_moneybook_api_production`.`mail_message`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mail_message` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mail_queue` to `prod_moneybook_api_production`.`mail_queue`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mail_queue` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mail_template` to `prod_moneybook_api_production`.`mail_template`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mail_template` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mail_type` to `prod_moneybook_api_production`.`mail_type`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mail_type` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`manetoku_access_logs` to `prod_moneybook_api_production`.`manetoku_access_logs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`manetoku_access_logs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`manetoku_categories` to `prod_moneybook_api_production`.`manetoku_categories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`manetoku_categories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`manetoku_categorizations` to `prod_moneybook_api_production`.`manetoku_categorizations`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`manetoku_categorizations` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`manetoku_category_taggings` to `prod_moneybook_api_production`.`manetoku_category_taggings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`manetoku_category_taggings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline` to `prod_moneybook_api_production`.`media_timeline`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_categories` to `prod_moneybook_api_production`.`media_timeline_categories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_categories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_category_taggings` to `prod_moneybook_api_production`.`media_timeline_category_taggings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_category_taggings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_fixed_row` to `prod_moneybook_api_production`.`media_timeline_fixed_row`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_fixed_row` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_media_timeline_fixed_row` to `prod_moneybook_api_production`.`media_timeline_media_timeline_fixed_row`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_media_timeline_fixed_row` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_media_timeline_tag` to `prod_moneybook_api_production`.`media_timeline_media_timeline_tag`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_media_timeline_tag` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`media_timeline_tag` to `prod_moneybook_api_production`.`media_timeline_tag`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`media_timeline_tag` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings` to `prod_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_apps_enechange_electric_bill_savings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_free_premium_term_history` to `prod_moneybook_api_production`.`mf_free_premium_term_history`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_free_premium_term_history` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key` to `prod_moneybook_api_production`.`mf_product_key`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key_service` to `prod_moneybook_api_production`.`mf_product_key_service`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key_service` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key_type` to `prod_moneybook_api_production`.`mf_product_key_type`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key_type` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key_type_group` to `prod_moneybook_api_production`.`mf_product_key_type_group`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key_type_group` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key_type_group_list` to `prod_moneybook_api_production`.`mf_product_key_type_group_list`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key_type_group_list` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mf_product_key_user` to `prod_moneybook_api_production`.`mf_product_key_user`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mf_product_key_user` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mfsc_agent` to `prod_moneybook_api_production`.`mfsc_agent`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mfsc_agent` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mfsc_agent_token` to `prod_moneybook_api_production`.`mfsc_agent_token`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mfsc_agent_token` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mfsc_service` to `prod_moneybook_api_production`.`mfsc_service`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mfsc_service` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mfsc_session` to `prod_moneybook_api_production`.`mfsc_session`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mfsc_session` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`mfsc_session_account` to `prod_moneybook_api_production`.`mfsc_session_account`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`mfsc_session_account` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`middle_category` to `prod_moneybook_api_production`.`middle_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`middle_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`monthly_access_log` to `prod_moneybook_api_production`.`monthly_access_log`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`monthly_access_log` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`naive_bayes_classifiers` to `prod_moneybook_api_production`.`naive_bayes_classifiers`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`naive_bayes_classifiers` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`naive_bayes_params` to `prod_moneybook_api_production`.`naive_bayes_params`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`naive_bayes_params` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`naive_bayes_statistic` to `prod_moneybook_api_production`.`naive_bayes_statistic`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`naive_bayes_statistic` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`no_aggre_service` to `prod_moneybook_api_production`.`no_aggre_service`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`no_aggre_service` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`notification_message` to `prod_moneybook_api_production`.`notification_message`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`notification_message` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`oauth_access_grants` to `prod_moneybook_api_production`.`oauth_access_grants`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`oauth_access_grants` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`oauth_access_tokens` to `prod_moneybook_api_production`.`oauth_access_tokens`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`oauth_access_tokens` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`oauth_applications` to `prod_moneybook_api_production`.`oauth_applications`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`oauth_applications` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`oauth_info` to `prod_moneybook_api_production`.`oauth_info`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`oauth_info` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`oauth_openid_requests` to `prod_moneybook_api_production`.`oauth_openid_requests`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`oauth_openid_requests` 
+  DROP FOREIGN KEY fk_rails_77114b3b09, 
+ADD CONSTRAINT fk_rails_77114b3b09 FOREIGN KEY(access_grant_id) REFERENCES `prod_moneybook_api_production`.`oauth_access_grants`(id), 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`office_sub_account_group_list` to `prod_moneybook_api_production`.`office_sub_account_group_list`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`office_sub_account_group_list` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
 # Comparing `ci_moneybook_api_production`.`password_reset_tokens` to `prod_moneybook_api_production`.`password_reset_tokens`   [PASS]
-# Comparing `ci_moneybook_api_production`.`pre_registration` to `prod_moneybook_api_production`.`pre_registration`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`pre_registration`
-# +++ `prod_moneybook_api_production`.`pre_registration`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`prefecture` to `prod_moneybook_api_production`.`prefecture`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`prefecture`
-# +++ `prod_moneybook_api_production`.`prefecture`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`premium_campaigns` to `prod_moneybook_api_production`.`premium_campaigns`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`premium_campaigns`
-# +++ `prod_moneybook_api_production`.`premium_campaigns`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`premium_registration_route` to `prod_moneybook_api_production`.`premium_registration_route`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`premium_registration_route`
-# +++ `prod_moneybook_api_production`.`premium_registration_route`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`premium_retrial_campaigns` to `prod_moneybook_api_production`.`premium_retrial_campaigns`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`premium_retrial_campaigns`
-# +++ `prod_moneybook_api_production`.`premium_retrial_campaigns`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`push_message` to `prod_moneybook_api_production`.`push_message`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`push_message`
-# +++ `prod_moneybook_api_production`.`push_message`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`push_notifications` to `prod_moneybook_api_production`.`push_notifications`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`push_notifications`
-# +++ `prod_moneybook_api_production`.`push_notifications`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`push_tokens` to `prod_moneybook_api_production`.`push_tokens`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`push_tokens`
-# +++ `prod_moneybook_api_production`.`push_tokens`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`real_estate_properties` to `prod_moneybook_api_production`.`real_estate_properties`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`real_estate_properties`
-# +++ `prod_moneybook_api_production`.`real_estate_properties`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`real_estate_property_accounts` to `prod_moneybook_api_production`.`real_estate_property_accounts`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`real_estate_property_accounts`
-# +++ `prod_moneybook_api_production`.`real_estate_property_accounts`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`report_contents` to `prod_moneybook_api_production`.`report_contents`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`report_contents`
-# +++ `prod_moneybook_api_production`.`report_contents`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`saving_means` to `prod_moneybook_api_production`.`saving_means`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`saving_means`
-# +++ `prod_moneybook_api_production`.`saving_means`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`schema_migrations` to `prod_moneybook_api_production`.`schema_migrations`   [FAIL]
+# Comparing `ci_moneybook_api_production`.`pre_registration` to `prod_moneybook_api_production`.`pre_registration`   [FAIL]
 # Transformation for --changes-for=server1:
 #
 
-ALTER TABLE `ci_moneybook_api_production`.`schema_migrations` 
-  DROP INDEX unique_schema_migrations, 
-  ADD UNIQUE INDEX unique_schema_migrations (version), 
-  CHANGE COLUMN version version varchar(255) NOT NULL;
+ALTER TABLE `ci_moneybook_api_production`.`pre_registration` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
 
-# Comparing `ci_moneybook_api_production`.`search_keyword` to `prod_moneybook_api_production`.`search_keyword`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`search_keyword`
-# +++ `prod_moneybook_api_production`.`search_keyword`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`secret_question` to `prod_moneybook_api_production`.`secret_question`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`secret_question`
-# +++ `prod_moneybook_api_production`.`secret_question`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`selected_user_intentions` to `prod_moneybook_api_production`.`selected_user_intentions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`selected_user_intentions`
-# +++ `prod_moneybook_api_production`.`selected_user_intentions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service` to `prod_moneybook_api_production`.`service`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service`
-# +++ `prod_moneybook_api_production`.`service`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_aliases` to `prod_moneybook_api_production`.`service_aliases`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_aliases`
-# +++ `prod_moneybook_api_production`.`service_aliases`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_category` to `prod_moneybook_api_production`.`service_category`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_category`
-# +++ `prod_moneybook_api_production`.`service_category`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_form` to `prod_moneybook_api_production`.`service_form`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_form`
-# +++ `prod_moneybook_api_production`.`service_form`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_form_descriptions` to `prod_moneybook_api_production`.`service_form_descriptions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_form_descriptions`
-# +++ `prod_moneybook_api_production`.`service_form_descriptions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_institutions` to `prod_moneybook_api_production`.`service_institutions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_institutions`
-# +++ `prod_moneybook_api_production`.`service_institutions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
+# Comparing `ci_moneybook_api_production`.`prefecture` to `prod_moneybook_api_production`.`prefecture`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`prefecture` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`premium_campaigns` to `prod_moneybook_api_production`.`premium_campaigns`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`premium_campaigns` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`premium_registration_route` to `prod_moneybook_api_production`.`premium_registration_route`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`premium_registration_route` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`premium_retrial_campaigns` to `prod_moneybook_api_production`.`premium_retrial_campaigns`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`premium_retrial_campaigns` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`push_message` to `prod_moneybook_api_production`.`push_message`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`push_message` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`push_notifications` to `prod_moneybook_api_production`.`push_notifications`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`push_notifications` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`push_tokens` to `prod_moneybook_api_production`.`push_tokens`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`push_tokens` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`real_estate_properties` to `prod_moneybook_api_production`.`real_estate_properties`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`real_estate_properties` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`real_estate_property_accounts` to `prod_moneybook_api_production`.`real_estate_property_accounts`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`real_estate_property_accounts` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`report_contents` to `prod_moneybook_api_production`.`report_contents`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`report_contents` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`saving_means` to `prod_moneybook_api_production`.`saving_means`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`saving_means` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`schema_migrations` to `prod_moneybook_api_production`.`schema_migrations`   [PASS]
+# Comparing `ci_moneybook_api_production`.`search_keyword` to `prod_moneybook_api_production`.`search_keyword`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`search_keyword` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`secret_question` to `prod_moneybook_api_production`.`secret_question`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`secret_question` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`selected_user_intentions` to `prod_moneybook_api_production`.`selected_user_intentions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`selected_user_intentions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service` to `prod_moneybook_api_production`.`service`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_aliases` to `prod_moneybook_api_production`.`service_aliases`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_aliases` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_category` to `prod_moneybook_api_production`.`service_category`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_category` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_form` to `prod_moneybook_api_production`.`service_form`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_form` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_form_descriptions` to `prod_moneybook_api_production`.`service_form_descriptions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_form_descriptions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_institutions` to `prod_moneybook_api_production`.`service_institutions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_institutions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
 # Comparing `ci_moneybook_api_production`.`service_omniauths` to `prod_moneybook_api_production`.`service_omniauths`   [PASS]
-# Comparing `ci_moneybook_api_production`.`service_proxy_override` to `prod_moneybook_api_production`.`service_proxy_override`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_proxy_override`
-# +++ `prod_moneybook_api_production`.`service_proxy_override`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_request` to `prod_moneybook_api_production`.`service_request`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_request`
-# +++ `prod_moneybook_api_production`.`service_request`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_request_form` to `prod_moneybook_api_production`.`service_request_form`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_request_form`
-# +++ `prod_moneybook_api_production`.`service_request_form`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_request_user` to `prod_moneybook_api_production`.`service_request_user`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_request_user`
-# +++ `prod_moneybook_api_production`.`service_request_user`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_genders` to `prod_moneybook_api_production`.`service_statistics_genders`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_genders`
-# +++ `prod_moneybook_api_production`.`service_statistics_genders`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_generals` to `prod_moneybook_api_production`.`service_statistics_generals`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_generals`
-# +++ `prod_moneybook_api_production`.`service_statistics_generals`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_generations` to `prod_moneybook_api_production`.`service_statistics_generations`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_generations`
-# +++ `prod_moneybook_api_production`.`service_statistics_generations`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_jobs` to `prod_moneybook_api_production`.`service_statistics_jobs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_jobs`
-# +++ `prod_moneybook_api_production`.`service_statistics_jobs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_prefectures` to `prod_moneybook_api_production`.`service_statistics_prefectures`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_prefectures`
-# +++ `prod_moneybook_api_production`.`service_statistics_prefectures`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_statistics_rankings` to `prod_moneybook_api_production`.`service_statistics_rankings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_statistics_rankings`
-# +++ `prod_moneybook_api_production`.`service_statistics_rankings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`service_sub_categories` to `prod_moneybook_api_production`.`service_sub_categories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`service_sub_categories`
-# +++ `prod_moneybook_api_production`.`service_sub_categories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`shops` to `prod_moneybook_api_production`.`shops`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`shops`
-# +++ `prod_moneybook_api_production`.`shops`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`spending_means` to `prod_moneybook_api_production`.`spending_means`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`spending_means`
-# +++ `prod_moneybook_api_production`.`spending_means`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`spending_target_defaults` to `prod_moneybook_api_production`.`spending_target_defaults`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`spending_target_defaults`
-# +++ `prod_moneybook_api_production`.`spending_target_defaults`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`spending_targets` to `prod_moneybook_api_production`.`spending_targets`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`spending_targets`
-# +++ `prod_moneybook_api_production`.`spending_targets`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`sso_token` to `prod_moneybook_api_production`.`sso_token`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`sso_token`
-# +++ `prod_moneybook_api_production`.`sso_token`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`sub_account` to `prod_moneybook_api_production`.`sub_account`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`sub_account`
-# +++ `prod_moneybook_api_production`.`sub_account`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`sub_account_group` to `prod_moneybook_api_production`.`sub_account_group`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`sub_account_group`
-# +++ `prod_moneybook_api_production`.`sub_account_group`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`sub_account_group_list` to `prod_moneybook_api_production`.`sub_account_group_list`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`sub_account_group_list`
-# +++ `prod_moneybook_api_production`.`sub_account_group_list`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`sugotoku_sessions` to `prod_moneybook_api_production`.`sugotoku_sessions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`sugotoku_sessions`
-# +++ `prod_moneybook_api_production`.`sugotoku_sessions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`tap_notification_versions` to `prod_moneybook_api_production`.`tap_notification_versions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`tap_notification_versions`
-# +++ `prod_moneybook_api_production`.`tap_notification_versions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`targeting_result` to `prod_moneybook_api_production`.`targeting_result`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`targeting_result`
-# +++ `prod_moneybook_api_production`.`targeting_result`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`targeting_user` to `prod_moneybook_api_production`.`targeting_user`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`targeting_user`
-# +++ `prod_moneybook_api_production`.`targeting_user`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`teaser` to `prod_moneybook_api_production`.`teaser`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`teaser`
-# +++ `prod_moneybook_api_production`.`teaser`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`top_news` to `prod_moneybook_api_production`.`top_news`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`top_news`
-# +++ `prod_moneybook_api_production`.`top_news`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`train_station_cybernetic_codes` to `prod_moneybook_api_production`.`train_station_cybernetic_codes`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`train_station_cybernetic_codes`
-# +++ `prod_moneybook_api_production`.`train_station_cybernetic_codes`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`trial_end_dates` to `prod_moneybook_api_production`.`trial_end_dates`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`trial_end_dates`
-# +++ `prod_moneybook_api_production`.`trial_end_dates`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`two_step_verification` to `prod_moneybook_api_production`.`two_step_verification`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`two_step_verification`
-# +++ `prod_moneybook_api_production`.`two_step_verification`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`universal_queue` to `prod_moneybook_api_production`.`universal_queue`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`universal_queue`
-# +++ `prod_moneybook_api_production`.`universal_queue`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user` to `prod_moneybook_api_production`.`user`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user`
-# +++ `prod_moneybook_api_production`.`user`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_act` to `prod_moneybook_api_production`.`user_asset_act`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_act`
-# +++ `prod_moneybook_api_production`.`user_asset_act`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_act_fut` to `prod_moneybook_api_production`.`user_asset_act_fut`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_act_fut`
-# +++ `prod_moneybook_api_production`.`user_asset_act_fut`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_act_institutions` to `prod_moneybook_api_production`.`user_asset_act_institutions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_act_institutions`
-# +++ `prod_moneybook_api_production`.`user_asset_act_institutions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_det` to `prod_moneybook_api_production`.`user_asset_det`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_det`
-# +++ `prod_moneybook_api_production`.`user_asset_det`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_det_hst` to `prod_moneybook_api_production`.`user_asset_det_hst`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_det_hst`
-# +++ `prod_moneybook_api_production`.`user_asset_det_hst`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_sum` to `prod_moneybook_api_production`.`user_asset_sum`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_sum`
-# +++ `prod_moneybook_api_production`.`user_asset_sum`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_asset_sum_hst` to `prod_moneybook_api_production`.`user_asset_sum_hst`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_asset_sum_hst`
-# +++ `prod_moneybook_api_production`.`user_asset_sum_hst`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_bill_details` to `prod_moneybook_api_production`.`user_bill_details`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_bill_details`
-# +++ `prod_moneybook_api_production`.`user_bill_details`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_bills` to `prod_moneybook_api_production`.`user_bills`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_bills`
-# +++ `prod_moneybook_api_production`.`user_bills`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_campaign_histories` to `prod_moneybook_api_production`.`user_campaign_histories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_campaign_histories`
-# +++ `prod_moneybook_api_production`.`user_campaign_histories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_campaigns` to `prod_moneybook_api_production`.`user_campaigns`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_campaigns`
-# +++ `prod_moneybook_api_production`.`user_campaigns`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_category_rule` to `prod_moneybook_api_production`.`user_category_rule`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_category_rule`
-# +++ `prod_moneybook_api_production`.`user_category_rule`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_channel` to `prod_moneybook_api_production`.`user_channel`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_channel`
-# +++ `prod_moneybook_api_production`.`user_channel`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_cm_influxes` to `prod_moneybook_api_production`.`user_cm_influxes`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_cm_influxes`
-# +++ `prod_moneybook_api_production`.`user_cm_influxes`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_emails` to `prod_moneybook_api_production`.`user_emails`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_emails`
-# +++ `prod_moneybook_api_production`.`user_emails`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_family_members` to `prod_moneybook_api_production`.`user_family_members`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_family_members`
-# +++ `prod_moneybook_api_production`.`user_family_members`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_hash` to `prod_moneybook_api_production`.`user_hash`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_hash`
-# +++ `prod_moneybook_api_production`.`user_hash`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_inquiry` to `prod_moneybook_api_production`.`user_inquiry`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_inquiry`
-# +++ `prod_moneybook_api_production`.`user_inquiry`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_interest_product` to `prod_moneybook_api_production`.`user_interest_product`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_interest_product`
-# +++ `prod_moneybook_api_production`.`user_interest_product`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_interests` to `prod_moneybook_api_production`.`user_interests`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_interests`
-# +++ `prod_moneybook_api_production`.`user_interests`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_mail_status` to `prod_moneybook_api_production`.`user_mail_status`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_mail_status`
-# +++ `prod_moneybook_api_production`.`user_mail_status`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_notification_categories` to `prod_moneybook_api_production`.`user_notification_categories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_notification_categories`
-# +++ `prod_moneybook_api_production`.`user_notification_categories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_notification_opening_statuses` to `prod_moneybook_api_production`.`user_notification_opening_statuses`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_notification_opening_statuses`
-# +++ `prod_moneybook_api_production`.`user_notification_opening_statuses`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_notification_parameters` to `prod_moneybook_api_production`.`user_notification_parameters`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_notification_parameters`
-# +++ `prod_moneybook_api_production`.`user_notification_parameters`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_notification_settings` to `prod_moneybook_api_production`.`user_notification_settings`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_notification_settings`
-# +++ `prod_moneybook_api_production`.`user_notification_settings`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_notifications` to `prod_moneybook_api_production`.`user_notifications`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_notifications`
-# +++ `prod_moneybook_api_production`.`user_notifications`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_payment` to `prod_moneybook_api_production`.`user_payment`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_payment`
-# +++ `prod_moneybook_api_production`.`user_payment`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_payment_revocations` to `prod_moneybook_api_production`.`user_payment_revocations`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_payment_revocations`
-# +++ `prod_moneybook_api_production`.`user_payment_revocations`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_permission` to `prod_moneybook_api_production`.`user_permission`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_permission`
-# +++ `prod_moneybook_api_production`.`user_permission`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_permission_account` to `prod_moneybook_api_production`.`user_permission_account`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_permission_account`
-# +++ `prod_moneybook_api_production`.`user_permission_account`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_permission_asset` to `prod_moneybook_api_production`.`user_permission_asset`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_permission_asset`
-# +++ `prod_moneybook_api_production`.`user_permission_asset`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_plan` to `prod_moneybook_api_production`.`user_plan`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_plan`
-# +++ `prod_moneybook_api_production`.`user_plan`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_premium_histories` to `prod_moneybook_api_production`.`user_premium_histories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_premium_histories`
-# +++ `prod_moneybook_api_production`.`user_premium_histories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_premium_payments` to `prod_moneybook_api_production`.`user_premium_payments`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_premium_payments`
-# +++ `prod_moneybook_api_production`.`user_premium_payments`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_prereleases` to `prod_moneybook_api_production`.`user_prereleases`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_prereleases`
-# +++ `prod_moneybook_api_production`.`user_prereleases`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_push_device` to `prod_moneybook_api_production`.`user_push_device`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_push_device`
-# +++ `prod_moneybook_api_production`.`user_push_device`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_push_device_permissions` to `prod_moneybook_api_production`.`user_push_device_permissions`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_push_device_permissions`
-# +++ `prod_moneybook_api_production`.`user_push_device_permissions`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_push_notifications` to `prod_moneybook_api_production`.`user_push_notifications`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_push_notifications`
-# +++ `prod_moneybook_api_production`.`user_push_notifications`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_push_setting` to `prod_moneybook_api_production`.`user_push_setting`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_push_setting`
-# +++ `prod_moneybook_api_production`.`user_push_setting`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_recurring_rule` to `prod_moneybook_api_production`.`user_recurring_rule`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_recurring_rule`
-# +++ `prod_moneybook_api_production`.`user_recurring_rule`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_route` to `prod_moneybook_api_production`.`user_route`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_route`
-# +++ `prod_moneybook_api_production`.`user_route`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_service` to `prod_moneybook_api_production`.`user_service`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_service`
-# +++ `prod_moneybook_api_production`.`user_service`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_split_tests` to `prod_moneybook_api_production`.`user_split_tests`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_split_tests`
-# +++ `prod_moneybook_api_production`.`user_split_tests`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_sub_meta` to `prod_moneybook_api_production`.`user_sub_meta`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_sub_meta`
-# +++ `prod_moneybook_api_production`.`user_sub_meta`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_sub_meta_hst` to `prod_moneybook_api_production`.`user_sub_meta_hst`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_sub_meta_hst`
-# +++ `prod_moneybook_api_production`.`user_sub_meta_hst`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_sub_period` to `prod_moneybook_api_production`.`user_sub_period`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_sub_period`
-# +++ `prod_moneybook_api_production`.`user_sub_period`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_sub_period_daily` to `prod_moneybook_api_production`.`user_sub_period_daily`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_sub_period_daily`
-# +++ `prod_moneybook_api_production`.`user_sub_period_daily`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_sub_period_hst` to `prod_moneybook_api_production`.`user_sub_period_hst`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_sub_period_hst`
-# +++ `prod_moneybook_api_production`.`user_sub_period_hst`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_survey_answers` to `prod_moneybook_api_production`.`user_survey_answers`   [PASS]
-# Comparing `ci_moneybook_api_production`.`user_tap_notification_histories` to `prod_moneybook_api_production`.`user_tap_notification_histories`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_tap_notification_histories`
-# +++ `prod_moneybook_api_production`.`user_tap_notification_histories`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_transfer_rule` to `prod_moneybook_api_production`.`user_transfer_rule`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_transfer_rule`
-# +++ `prod_moneybook_api_production`.`user_transfer_rule`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`user_withdrawal_logs` to `prod_moneybook_api_production`.`user_withdrawal_logs`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`user_withdrawal_logs`
-# +++ `prod_moneybook_api_production`.`user_withdrawal_logs`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`withdrawal_feedback` to `prod_moneybook_api_production`.`withdrawal_feedback`   [PASS]
-# WARNING: Table options are ignored and differences were found:
-# --- `ci_moneybook_api_production`.`withdrawal_feedback`
-# +++ `prod_moneybook_api_production`.`withdrawal_feedback`
-# @@ -2,4 +2,3 @@
-#  DEFAULT
-#  CHARSET=utf8mb4
-#  COLLATE=utf8mb4_bin
-# -ROW_FORMAT=COMPRESSED
-# Comparing `ci_moneybook_api_production`.`access_token_delete_trigger` to `prod_moneybook_api_production`.`access_token_delete_trigger`   [FAIL]
+# Comparing `ci_moneybook_api_production`.`service_proxy_override` to `prod_moneybook_api_production`.`service_proxy_override`   [FAIL]
 # Transformation for --changes-for=server1:
 #
 
-DROP TRIGGER IF EXISTS `ci_moneybook_api_production`.`access_token_delete_trigger`;
-CREATE DEFINER=prodfdb_update@localhost TRIGGER ci_moneybook_api_production.access_token_delete_trigger AFTER DELETE ON ci_moneybook_api_production.access_token FOR EACH ROW BEGIN
-  CALL update_log("access_token", "D", OLD.user_id, 0);
-END;
+ALTER TABLE `ci_moneybook_api_production`.`service_proxy_override` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_request` to `prod_moneybook_api_production`.`service_request`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_request` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_request_form` to `prod_moneybook_api_production`.`service_request_form`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_request_form` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_request_user` to `prod_moneybook_api_production`.`service_request_user`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_request_user` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_genders` to `prod_moneybook_api_production`.`service_statistics_genders`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_genders` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_generals` to `prod_moneybook_api_production`.`service_statistics_generals`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_generals` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_generations` to `prod_moneybook_api_production`.`service_statistics_generations`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_generations` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_jobs` to `prod_moneybook_api_production`.`service_statistics_jobs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_jobs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_prefectures` to `prod_moneybook_api_production`.`service_statistics_prefectures`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_prefectures` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_statistics_rankings` to `prod_moneybook_api_production`.`service_statistics_rankings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_statistics_rankings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`service_sub_categories` to `prod_moneybook_api_production`.`service_sub_categories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`service_sub_categories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`shops` to `prod_moneybook_api_production`.`shops`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`shops` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`spending_means` to `prod_moneybook_api_production`.`spending_means`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`spending_means` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`spending_target_defaults` to `prod_moneybook_api_production`.`spending_target_defaults`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`spending_target_defaults` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`spending_targets` to `prod_moneybook_api_production`.`spending_targets`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`spending_targets` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`sso_token` to `prod_moneybook_api_production`.`sso_token`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`sso_token` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`sub_account` to `prod_moneybook_api_production`.`sub_account`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`sub_account` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`sub_account_group` to `prod_moneybook_api_production`.`sub_account_group`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`sub_account_group` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`sub_account_group_list` to `prod_moneybook_api_production`.`sub_account_group_list`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`sub_account_group_list` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`sugotoku_sessions` to `prod_moneybook_api_production`.`sugotoku_sessions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`sugotoku_sessions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`tap_notification_versions` to `prod_moneybook_api_production`.`tap_notification_versions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`tap_notification_versions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`targeting_result` to `prod_moneybook_api_production`.`targeting_result`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`targeting_result` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`targeting_user` to `prod_moneybook_api_production`.`targeting_user`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`targeting_user` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`teaser` to `prod_moneybook_api_production`.`teaser`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`teaser` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`top_news` to `prod_moneybook_api_production`.`top_news`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`top_news` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`train_station_cybernetic_codes` to `prod_moneybook_api_production`.`train_station_cybernetic_codes`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`train_station_cybernetic_codes` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`trial_end_dates` to `prod_moneybook_api_production`.`trial_end_dates`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`trial_end_dates` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`two_step_verification` to `prod_moneybook_api_production`.`two_step_verification`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`two_step_verification` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`universal_queue` to `prod_moneybook_api_production`.`universal_queue`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`universal_queue` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user` to `prod_moneybook_api_production`.`user`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_act` to `prod_moneybook_api_production`.`user_asset_act`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_act` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_act_fut` to `prod_moneybook_api_production`.`user_asset_act_fut`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_act_fut` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_act_institutions` to `prod_moneybook_api_production`.`user_asset_act_institutions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_act_institutions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_det` to `prod_moneybook_api_production`.`user_asset_det`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_det` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_det_hst` to `prod_moneybook_api_production`.`user_asset_det_hst`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_det_hst` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_sum` to `prod_moneybook_api_production`.`user_asset_sum`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_sum` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_asset_sum_hst` to `prod_moneybook_api_production`.`user_asset_sum_hst`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_asset_sum_hst` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_bill_details` to `prod_moneybook_api_production`.`user_bill_details`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_bill_details` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_bills` to `prod_moneybook_api_production`.`user_bills`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_bills` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_campaign_histories` to `prod_moneybook_api_production`.`user_campaign_histories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_campaign_histories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_campaigns` to `prod_moneybook_api_production`.`user_campaigns`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_campaigns` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_category_rule` to `prod_moneybook_api_production`.`user_category_rule`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_category_rule` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_channel` to `prod_moneybook_api_production`.`user_channel`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_channel` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_cm_influxes` to `prod_moneybook_api_production`.`user_cm_influxes`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_cm_influxes` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_emails` to `prod_moneybook_api_production`.`user_emails`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_emails` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_family_members` to `prod_moneybook_api_production`.`user_family_members`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_family_members` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_hash` to `prod_moneybook_api_production`.`user_hash`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_hash` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_inquiry` to `prod_moneybook_api_production`.`user_inquiry`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_inquiry` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_interest_product` to `prod_moneybook_api_production`.`user_interest_product`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_interest_product` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_interests` to `prod_moneybook_api_production`.`user_interests`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_interests` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_mail_status` to `prod_moneybook_api_production`.`user_mail_status`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_mail_status` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_notification_categories` to `prod_moneybook_api_production`.`user_notification_categories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_notification_categories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_notification_opening_statuses` to `prod_moneybook_api_production`.`user_notification_opening_statuses`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_notification_opening_statuses` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_notification_parameters` to `prod_moneybook_api_production`.`user_notification_parameters`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_notification_parameters` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_notification_settings` to `prod_moneybook_api_production`.`user_notification_settings`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_notification_settings` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_notifications` to `prod_moneybook_api_production`.`user_notifications`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_notifications` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_payment` to `prod_moneybook_api_production`.`user_payment`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_payment` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_payment_revocations` to `prod_moneybook_api_production`.`user_payment_revocations`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_payment_revocations` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_permission` to `prod_moneybook_api_production`.`user_permission`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_permission` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_permission_account` to `prod_moneybook_api_production`.`user_permission_account`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_permission_account` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_permission_asset` to `prod_moneybook_api_production`.`user_permission_asset`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_permission_asset` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_plan` to `prod_moneybook_api_production`.`user_plan`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_plan` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_premium_histories` to `prod_moneybook_api_production`.`user_premium_histories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_premium_histories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_premium_payments` to `prod_moneybook_api_production`.`user_premium_payments`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_premium_payments` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_prereleases` to `prod_moneybook_api_production`.`user_prereleases`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_prereleases` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_push_device` to `prod_moneybook_api_production`.`user_push_device`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_push_device` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_push_device_permissions` to `prod_moneybook_api_production`.`user_push_device_permissions`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_push_device_permissions` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_push_notifications` to `prod_moneybook_api_production`.`user_push_notifications`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_push_notifications` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_push_setting` to `prod_moneybook_api_production`.`user_push_setting`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_push_setting` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_recurring_rule` to `prod_moneybook_api_production`.`user_recurring_rule`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_recurring_rule` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_route` to `prod_moneybook_api_production`.`user_route`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_route` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_service` to `prod_moneybook_api_production`.`user_service`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_service` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_split_tests` to `prod_moneybook_api_production`.`user_split_tests`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_split_tests` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_sub_meta` to `prod_moneybook_api_production`.`user_sub_meta`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_sub_meta` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_sub_meta_hst` to `prod_moneybook_api_production`.`user_sub_meta_hst`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_sub_meta_hst` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_sub_period` to `prod_moneybook_api_production`.`user_sub_period`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_sub_period` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_sub_period_daily` to `prod_moneybook_api_production`.`user_sub_period_daily`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_sub_period_daily` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_sub_period_hst` to `prod_moneybook_api_production`.`user_sub_period_hst`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_sub_period_hst` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_survey_answers` to `prod_moneybook_api_production`.`user_survey_answers`   [PASS]
+# Comparing `ci_moneybook_api_production`.`user_tap_notification_histories` to `prod_moneybook_api_production`.`user_tap_notification_histories`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_tap_notification_histories` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_transfer_rule` to `prod_moneybook_api_production`.`user_transfer_rule`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_transfer_rule` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`user_withdrawal_logs` to `prod_moneybook_api_production`.`user_withdrawal_logs`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`user_withdrawal_logs` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
+
+# Comparing `ci_moneybook_api_production`.`withdrawal_feedback` to `prod_moneybook_api_production`.`withdrawal_feedback`   [FAIL]
+# Transformation for --changes-for=server1:
+#
+
+ALTER TABLE `ci_moneybook_api_production`.`withdrawal_feedback` 
+# WARNING: the destination table contains options that are not in the source.
+# Cannot generate ALTER statement.;
 
 # Comparing `ci_moneybook_api_production`.`access_token_insert_trigger` to `prod_moneybook_api_production`.`access_token_insert_trigger`   [FAIL]
 # Transformation for --changes-for=server1:

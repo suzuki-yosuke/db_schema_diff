@@ -7,9 +7,12 @@
 #        TABLE: schema_migrations
 #        TABLE: internal_user_grants
 # Comparing `ci_mf_internal_production` to `prod_mf_internal_production`   [FAIL]
-# Transformation for --changes-for=server1:
-#
 
-ALTER DATABASE ci_mf_internal_production COLLATE = utf8mb4_general_ci;
-
+# WARNING: Cannot generate SQL statements for these objects.
+# Check the difference output for other discrepencies.
+--- `ci_mf_internal_production`
++++ `prod_mf_internal_production`
+@@ -1 +1 @@
+-CREATE DATABASE `ci_mf_internal_production` /*!40100 DEFAULT CHARACTER SET utf8mb4 */
++CREATE DATABASE `prod_mf_internal_production` /*!40100 DEFAULT CHARACTER SET utf8mb4 */
 Success. All objects are the same.
