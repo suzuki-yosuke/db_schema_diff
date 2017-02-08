@@ -87,14 +87,14 @@ do
   # DB Check
   rc_schemaCheck="0"
 
-  if [ -f "${config_dir}/ci_${dbName}.sql" ]; then
-    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
-    mysql \
-    -u ${dbID} \
-    -p${dbPass} \
-    -h ${dbHost} \
-    ci_${dbName} < ${config_dir}/ci_${dbName}.sql
-  fi
+#  if [ -f "${config_dir}/ci_${dbName}.sql" ]; then
+#    echo "mysql -u ${dbID} -p${dbPass} -h ${dbHost} ci_${dbName} < ${config_dir}/ci_${dbName}.sql"
+#    mysql \
+#    -u ${dbID} \
+#    -p${dbPass} \
+#    -h ${dbHost} \
+#    ci_${dbName} < ${config_dir}/ci_${dbName}.sql
+#  fi
 
   mysql \
   -u ${dbID} \
@@ -140,5 +140,5 @@ EOF`
   fi
 done
 
-#rm ${dbList} ${diffDb} ${diffDb}.tmp
+rm ${dbList} ${diffDb} ${diffDb}.tmp
 } 2>&1 | tee -a ${log_file}
