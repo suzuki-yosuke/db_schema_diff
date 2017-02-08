@@ -128,12 +128,13 @@ do
 
   ## Slack通知
   if [ $rc_schemaCheck -ne "0" ];then
+    message=`cat ${diffDb}`
     data=`cat << EOF
     payload={
       "channel": "${channel}",
       "username": "${username}",
       "icon_emoji": "${icon}",
-      "text": "${diffDb}"
+      "text": "${message}"
       }
 EOF`
       curl -X POST --data-urlencode "$data" ${url}
